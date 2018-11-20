@@ -1,8 +1,10 @@
 import pygame
+import TmpFiles.alkagit
 
 White = (255,255,255)
-pad_width = 1024
-pad_height = 1024
+pad_width = 700
+pad_height = 700
+
 
 def runGame():
     global gamepad, clock
