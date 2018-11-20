@@ -1,0 +1,17 @@
+(dp0
+S'tomato'
+p1
+I3
+sS'Spaghetti'
+p2
+I5
+sS'Junha'
+p3
+I52
+sS'with'
+p4
+I4
+sS'Jungwan'
+p5
+I42
+s.

@@ -8,9 +8,9 @@ pygame.display.init()
 pygame.font.init()
 
 #Set to -1 to choose at runtime
-num_particles = 200
+num_particles = 20
 #Whether collisions are enabled
-collisions = False
+collisions = True
 #Whether to contrain particles to the edges.  Not affected by the collisions enabled flag.
 edge_clamp = False
 #The amount to scale the particles' radius by
@@ -18,7 +18,7 @@ radius_scale = 30.0
 #Particles' maximum (random) speed (pixels/sec)
 max_initial_speed = 100.0
 #The gravitational constant in this universe in pixels^3 kg^-1 s^-2.  The real one is 6.67384*(10^-11) m^3 kg^-1 s^-2
-G = 50000.0
+G = 500000
 #Movement substeps at the given timestep
 movement_substeps = 1
 #Target FPS
