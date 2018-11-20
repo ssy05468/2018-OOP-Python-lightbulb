@@ -1,8 +1,9 @@
-class gameBoard:
-    pass
+import pygame
+#class gameBoard:
+#    pass
 
-class stone:
-    pass
+#class stone:
+#    pass
 
-class gravity:
-    pass
+#class gravity:
+#    pass
