@@ -8,13 +8,13 @@ pygame.display.init()
 pygame.font.init()
 
 #Set to -1 to choose at runtime
-num_particles = 100
+num_particles = 200
 #Whether collisions are enabled
-collisions = True
+collisions = False
 #Whether to contrain particles to the edges.  Not affected by the collisions enabled flag.
 edge_clamp = False
 #The amount to scale the particles' radius by
-radius_scale = 2.0
+radius_scale = 30.0
 #Particles' maximum (random) speed (pixels/sec)
 max_initial_speed = 100.0
 #The gravitational constant in this universe in pixels^3 kg^-1 s^-2.  The real one is 6.67384*(10^-11) m^3 kg^-1 s^-2
@@ -22,7 +22,7 @@ G = 50000.0
 #Movement substeps at the given timestep
 movement_substeps = 1
 #Target FPS
-target_fps = 60.0
+target_fps = 120.0
 #dt (should be 1.0/target_fps for realtime, but you can change it to speed up or slow down time)
 dt = 1.0/target_fps
 
@@ -35,7 +35,7 @@ if num_particles == -1:
             print("Could not parse number.")
 num_particles_orig = num_particles
 
-screen_size = [800,600]
+screen_size = [1920,1200]
 icon = pygame.Surface((1,1)); icon.set_alpha(0); pygame.display.set_icon(icon)
 pygame.display.set_caption("Gravity Simulation - Ian Mallett - v.4.0.0 - 2013")
 surface = pygame.display.set_mode(screen_size)
