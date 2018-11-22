@@ -8,7 +8,7 @@ pygame.display.init()
 pygame.font.init()
 
 #Set to -1 to choose at runtime
-num_particles = 20
+num_particles = 10
 #Whether collisions are enabled
 collisions = True
 #Whether to contrain particles to the edges.  Not affected by the collisions enabled flag.
@@ -35,7 +35,7 @@ if num_particles == -1:
             print("Could not parse number.")
 num_particles_orig = num_particles
 
-screen_size = [1920,1200]
+screen_size = [900 ,600]
 icon = pygame.Surface((1,1)); icon.set_alpha(0); pygame.display.set_icon(icon)
 pygame.display.set_caption("Gravity Simulation - Ian Mallett - v.4.0.0 - 2013")
 surface = pygame.display.set_mode(screen_size)
@@ -43,17 +43,18 @@ surface = pygame.display.set_mode(screen_size)
 def rndint(num): return int(round(num))
 
 class Particle(object):
-    def __init__(self, pos=None,vel=None, mass=None):
-        if pos == None: self.pos = [random.uniform(10.0,screen_size[0]-10.0),random.uniform(10.0,screen_size[1]-10.0)]
+    def __init__(self, pos=None,vel=None, mass=None, index=None):
+        if pos == None: self.pos = [index*85,100]
         else:           self.pos = pos
+        if mass == None: self.mass = 1.0
+        else:            self.mass = mass/4
         if vel == None:
             angle = random.uniform(0.0,2.0*pi)
-            r = random.uniform(0.0,max_initial_speed)
-            self.vel = [r*cos(angle),r*sin(angle)]
+            r = self.mass # 반지름을 무게에 비례하게 만든다.
+            self.vel = [0,0]
         else:
             self.vel = vel
-        if mass == None: self.mass = 1.0
-        else:            self.mass = mass
+
         self.forces = [0.0,0.0]
     def get_radius(self):
         #Assuming these objects are actually spheres, the radius scales with the cube root of
@@ -105,12 +106,14 @@ class Particle(object):
         )
 
 def setup_particles():
-    global particles
+    global particles # 입자 class를 담고 있는 리스트
     global num_particles
     num_particles = num_particles_orig
-    particles = [Particle() for i in range(num_particles)]
-
+    particles = [Particle(mass=i, index=i) for i in range(1, num_particles+1)]
+flag = 0
 def get_input():
+    global flag
+
     keys_pressed = pygame.key.get_pressed()
     mouse_buttons = pygame.mouse.get_pressed()
     mouse_position = pygame.mouse.get_pos()
@@ -120,6 +123,10 @@ def get_input():
         elif event.type == KEYDOWN:
             if   event.key == K_ESCAPE: return False
             elif event.key == K_r: setup_particles() #reset
+        elif event.type == K_m: flag=1
+
+    if flag==1 : collision_detect()
+
     return True
 def move():
     for i in range(movement_substeps):
@@ -178,8 +185,7 @@ def main():
     clock = pygame.time.Clock()
     while True:
         if not get_input(): break
-        move()
-        if collisions: collision_detect()
+        #if collisions: collision_detect() # 충돌을 감지한다.
         if edge_clamp: clamp_to_edges()
         draw()
         clock.tick(target_fps)
