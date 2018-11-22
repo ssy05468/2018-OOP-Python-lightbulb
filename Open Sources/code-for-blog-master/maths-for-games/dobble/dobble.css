@@ -1,0 +1,190 @@
+.dobble-card {
+    fill: #ddd;
+}
+
+.failed-card {
+    stroke: red;
+    fill: none;
+}
+
+.dobble-symbol {
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-family: serif;
+    cursor: default;
+}
+
+.red { fill: red; }
+.pink { fill: rgb(255, 0, 175); }
+.blue { fill: rgb(64, 95, 237); }
+.green { fill: rgb(28, 173, 123); }
+
+.dobble-underline {
+    stroke: #222;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.dobble-table {
+    stroke: #222;
+    stroke-width: 0.5;
+}
+
+.dobble-table-block {
+    fill: #222;
+}
+
+.table-symbol {
+    font-size: 0.75em;
+}
+
+.symbol-set {
+    pointer-events: none;
+}
+
+.symbol-set.highlight {
+    fill: rgb(255, 0, 175);
+    cursor: pointer;
+}
+
+.interactive-card:hover {
+  fill: #ccc;
+}
+
+.dividing-lines {
+    stroke-width: 0.5;
+    stroke: #444;
+}
+
+.card-line {
+    fill: none;
+    stroke: rgb(64, 95, 237);
+    stroke-width: 1.5;
+    pointer-events: none;
+}
+  
+.background-line {
+    fill: none;
+    stroke-width: 6;
+    pointer-events: stroke;
+}
+
+.symbol-point {
+    fill: rgb(64, 95, 237);
+}
+
+.symbol-point text {
+    font-size: 0.8em;
+}
+
+.symbol-point:hover {
+    fill: rgb(255, 0, 175);
+}
+
+.symbol-point:hover .card-line {
+    stroke: rgb(255, 0, 175);
+}
+
+line.highlight {
+    stroke: rgb(255, 0, 175);
+}
+
+circle.highlight {
+    stroke: rgb(255, 0, 175);
+}
+
+.highlight * {
+    fill: rgb(255, 0, 175);
+}
+
+.spiral-symbol {
+    font-size: 0.75em;
+    fill: white;
+}
+
+.dobble-spiral {
+    fill: none;
+    stroke: rgb(64, 95, 237);
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.dobble-diagonal {
+    stroke: rgb(255, 0, 175);
+    opacity: 0.75;
+}
+
+.dobble-controls {
+    width: 420px;
+    position: relative;
+    background-color: #eee;
+    padding: 10px;
+}
+
+.dobble-controls input {
+    position: absolute;
+    right: 10px;
+}
+
+.slider-wrapper {
+    height: 28px;
+}
+
+.slider-wrapper label {
+    line-height: 28px;
+}
+
+.slider-wrapper input {
+    margin-top: 6px;
+}
+
+.dobble-builder {
+    margin: 0 20px;
+}
+
+.dobble-header {
+    font-weight: bold;
+}
+
+.card-count {
+    alignment-baseline: middle;
+}
+
+.matching .dobble-card {
+    fill: rgb(28, 173, 123);
+}
+
+.matching .dobble-symbol {
+    fill: white;
+}
+
+.symbol-counts {
+    font-size: 0.8em;
+}
+
+.new-card .dobble-card {
+    fill: none;
+    stroke-width: 2;
+    stroke: #ddd;
+}
+
+.new-card .dobble-symbol {
+    cursor: pointer;
+    font-size: 1.2em;
+    fill: #ddd;
+}
+
+.new-card .dobble-symbol:hover {
+    fill: rgb(255, 0, 175);
+}
+
+.dobble-symbol.selected {
+    fill: black;
+}
+
+.remove-card-btn {
+    font-weight: bold;
+    fill: red;
+    cursor: pointer;
+}

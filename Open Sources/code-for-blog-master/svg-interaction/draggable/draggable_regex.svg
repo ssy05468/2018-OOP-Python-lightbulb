@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 30 20"
+     onload="makeDraggable(evt)">
+    
+    <style>
+      .static {
+        fill: #888;
+        cursor: not-allowed;
+      }
+      .draggable {
+        fill: #007bff;
+        cursor: move;
+      }
+      .draggable:hover {
+        stroke-weight: 1px;
+        stroke: white;
+      }
+    </style>
+    
+    <script type="text/javascript"><![CDATA[
+      function makeDraggable(evt) {
+        var svg = evt.target;
+        svg.addEventListener('mousedown', startDrag, false);
+        svg.addEventListener('mousemove', drag, false);
+        svg.addEventListener('mouseup', endDrag, false);
+
+        var selectedElement, dragX, dragY;
+        var reTranslate = /translate\s*\(([-\+\d\.\s,e]+)\)/gi;
+
+        function startDrag(evt) {
+          if (evt.target.classList.contains('draggable')) {
+            var screenMatrix = svg.getScreenCTM();
+            selectedElement = evt.target;
+            dragX = evt.clientX / screenMatrix.a;
+            dragY = evt.clientY / screenMatrix.d;
+
+            // Parse existing translate transform
+            var transform = selectedElement.getAttributeNS(null, "transform");
+            var translate = reTranslate.exec(transform);
+            if (translate) {
+              var digits = translate[1].split(/\s*[,\s]+/);
+              dragX -= parseFloat(digits[0] || 0);
+              dragY -= parseFloat(digits[1] || 0);
+            } else {
+              // We need to add a translate transform if there isn't already one
+              translate = "translate(0, 0)";
+              if (transform) {
+                selectedElement.setAttributeNS(null, "transform", translate + transform);
+              } else {
+                selectedElement.setAttributeNS(null, "transform", translate);
+              }
+            }
+          }
+        }
+
+        function drag(evt) {
+          if (selectedElement) {
+            var screenMatrix = svg.getScreenCTM();
+            var x = evt.clientX / screenMatrix.a - dragX;
+            var y = evt.clientY / screenMatrix.d - dragY;
+
+            // Remove the existing translate and replace with the new one
+            var transform = selectedElement.getAttributeNS(null, "transform");
+            transform = transform.replace(reTranslate, "translate(" + x  + " " + y + ")");
+            selectedElement.setAttributeNS(null, "transform", transform);
+
+            console.log(selectedElement.getCTM());
+          }
+        }
+
+        function endDrag(evt) {
+          selectedElement = false;
+        }
+      }
+    ]]> </script>
+    
+    <rect x="0" y="0" width="30" height="20" fill="#eee"/>
+    <rect class="static" x="2" y="3" width="4" height="3"/>
+    <rect class="draggable" x="22" y="4" width="5" height="4"/>
+    <polygon class="draggable" transform="rotate(15, 15, 14)" points="16.9 14.6 17.4 17.2 15 16 12.6 17.2 13.1 14.6 11.2 12.8 13.8 12.4 15 10 16.2 12.4 18.8 12.8"/>
+
+</svg>

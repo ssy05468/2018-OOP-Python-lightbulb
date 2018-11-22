@@ -1,0 +1,21 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 300 300"
+  id="my-svg">
+  <style>
+    circle {
+      fill-opacity: 0.5;
+      stroke-width: 3;
+      fill: rgb(0, 123, 255);
+      stroke: rgb(0, 123, 255);
+    }
+  </style>
+  <circle id="target" cx="100" cy="100" r="30" />
+  <circle cx="200" cy="100" r="30" />
+
+  <script type="text/javascript"><![CDATA[
+    var element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    console.log(element);
+
+  ]]></script>
+</svg>
