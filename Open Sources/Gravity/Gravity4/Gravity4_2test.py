@@ -28,10 +28,13 @@ dt = 1.0/target_fps
 #flag는 움직임 시작할지에 대한 정보
 flag=0
 #마찰력
-friction_constant = -0.5
+friction_constant = 20
 #충돌 탄성 계수
 elasticity = 0.75
-
+#현재 지정해주는 임의의 속도
+initial_vel = 100
+#지정된 돌 바꾸는데 필요한 상수
+now_move=0
 if num_particles == -1:
     while True:
         try:
@@ -57,13 +60,12 @@ class Particle(object):
         if mass == None:
             self.mass = 1.0
             self.hasmass = self.mass
-
         else:
             self.mass = mass/4
             self.hasmass = self.mass
         if vel == None:
-            angle = random.uniform(0.0,2.0*pi)
-            self.angle=angle
+            #angle = random.uniform(0.0,2.0*pi)
+            self.angle=900
             r = self.mass # 반지름을 무게에 비례하게 만든다.
             self.vel = [0,0]
         else:
@@ -73,15 +75,15 @@ class Particle(object):
     def get_radius(self):
         #Assuming these objects are actually spheres, the radius scales with the cube root of
         #the mass.  If you prefer circle, change to the square root.
-
-        self.radius = radius_scale*(self.hasmass**(1.0/3.0))
+        self.radius = radius_scale*(self.hasmass**(1.0/3.0)) # 반지름 변수도 추가하였음
         return self.radius
     def set_velocity(particle1):
-        #angle = particle1.angle
-        angle = pi/4
-        particle1.vel = [100*cos(angle), 100*sin(angle)]
+        angle = particle1.angle
+        particle1.vel = [initial_vel*cos(angle), initial_vel*sin(angle)]
+    def set_angle(particle1, setting_angle):
+        particle1.angle = setting_angle
     @staticmethod
-    def add_forces(particle1,particle2):
+    def add_forces(particle1,particle2): # 만유인력에서의 힘 측정 (사용하지 않음)
         dx = particle2.pos[0] - particle1.pos[0]
         dy = particle2.pos[1] - particle1.pos[1]
         r_squared = dx*dx + dy*dy
@@ -94,7 +96,7 @@ class Particle(object):
         particle2.forces[0] -= dx_normalized_scaled
         particle2.forces[1] -= dy_normalized_scaled
     @staticmethod
-    def get_collided(particle1,particle2):
+    def get_collided(particle1,particle2): # 충돌 감지 (현재 사용하고 있음)
         r1 = particle1.get_radius()
         r2 = particle2.get_radius()
         both = r1 + r2
@@ -108,24 +110,40 @@ class Particle(object):
     def move(self, dt):
         self.pos[0] += dt * self.vel[0]
         self.pos[1] += dt * self.vel[1]
-        a_x = dt * self.forces[0] / self.mass #F=MA -> A=F/M
-        a_y = dt * self.forces[1] / self.mass
-        while abs(a_x)>width: a_x/=10.0 #This can happen, especially without collisions
-        while abs(a_y)>height: a_y/=10.0
+        #a_x = dt * self.forces[0] / self.mass #F=MA -> A=F/M
+        #a_y = dt * self.forces[1] / self.mass
+        #while abs(a_x)>width: a_x/=10.0 #This can happen, especially without collisions
+        #while abs(a_y)>height: a_y/=10.0
+
+        # 마찰력 부분입니다....
+        # 마찰력 부분입니다....
+        a_x=0
+        a_y=0
 
         if self.vel[0]!=0 and self.vel[1]!=0 :
-            a_x = friction_constant
-            a_y = friction_constant
+            a_x = -self.vel[0]/abs(self.vel[0])*friction_constant
+            a_y = -self.vel[1]/abs(self.vel[1])*friction_constant
 
-        self.vel[0] += a_x
-        self.vel[1] += a_y
+        self.vel[0] += dt*a_x
+        self.vel[1] += dt*a_y
 
-        if self.vel[0]<0 or self.vel[1]<0 :
-            self.vel[0]=0
-            self.vel[1]=0
+        if a_x/abs(a_x)<0 and a_y/abs(a_y)<0:
+            if self.vel[0] < 0 and self.vel[1] < 0:
+                self.vel[0] = 0
+                self.vel[1] = 0
+        elif a_x/abs(a_x)>0 and a_y/abs(a_y)<0:
+            if self.vel[0] > 0 and self.vel[1] < 0:
+                self.vel[0] = 0
+                self.vel[1] = 0
+        elif a_x/abs(a_x)<0 and a_y/abs(a_y)>0:
+            if self.vel[0] < 0 and self.vel[1] > 0:
+                self.vel[0] = 0
+                self.vel[1] = 0
+        elif a_x/abs(a_x)>0 and a_y/abs(a_y)>0:
+            if self.vel[0] > 0 and self.vel[1] > 0:
+                self.vel[0] = 0
+                self.vel[1] = 0
 
-        self.forces[0] = 0.0
-        self.forces[1] = 0.0
     def draw(self, surface):
         pygame.draw.circle(
             surface,
@@ -166,10 +184,12 @@ def setup_particles():
 def get_input():
     global flag
     global particles
+    global now_move
     keys_pressed = pygame.key.get_pressed()
     mouse_buttons = pygame.mouse.get_pressed()
     mouse_position = pygame.mouse.get_pos()
     mouse_rel = pygame.mouse.get_rel()
+
     for event in pygame.event.get():
         if   event.type == QUIT: return False
         elif event.type == KEYDOWN:
@@ -179,6 +199,21 @@ def get_input():
             elif event.key == K_s : flag=0
             elif event.key == K_1 :
                 Particle.set_velocity(particle1=particles[1])
+                now_move=1
+            elif event.key == K_2 :
+                Particle.set_velocity(particle1=particles[2])
+                now_move = 2
+            elif event.key == K_3:
+                Particle.set_velocity(particle1=particles[3])
+                now_move = 3
+            elif event.key == K_RIGHT :
+                Particle.set_angle(particle1=particles[now_move], setting_angle=0)
+            elif event.key == K_LEFT :
+                Particle.set_angle(particle1=particles[now_move], setting_angle=pi)
+            elif event.key == K_UP :
+                Particle.set_angle(particle1=particles[now_move], setting_angle=pi/2)
+            elif event.key == K_DOWN:
+                Particle.set_angle(particle1=particles[now_move], setting_angle=pi*3/2)
     #if flag==1 : collision_detect()
 
     return True
@@ -186,9 +221,46 @@ def move():
     for i in range(movement_substeps):
         for j in range(0,num_particles,1):
             for k in range(j+1,num_particles,1):
-                Particle.add_forces(particles[j],particles[k])
+                Particle.add_forces(particles[j],particles[k]) #중력의 영향으로 힘을 가해주는 부분
         for p in particles:
             p.move(dt/float(movement_substeps))
+
+def new_move() :
+    for i in range(movement_substeps):
+        for j in range(0,num_particles,1):
+            print(particles[j].angle)
+            if particles[j].vel != [0,0] and particles[j].angle != 900:
+                particles[j].move(dt/float(movement_substeps))
+
+def collide():
+    for i in range(0,num_particles,1):
+        for j in range(i+1,num_particles,1):
+            p1 = particles[i]
+            p2 = particles[j]
+            if Particle.get_collided(p1,p2):
+                dx = p1.pos[0] - p2.pos[0]
+                dy = p1.pos[1] - p2.pos[1]
+
+                tangent = atan2(dy, dx)
+                angle = 0.5 * pi + tangent
+
+                angle1 = 2 * tangent - p1.angle
+                angle2 = 2 * tangent - p2.angle
+                speed1x = p2.vel[0] * elasticity
+                speed1y = p2.vel[1] * elasticity
+                speed2x = p1.vel[0] * elasticity
+                speed2y = p1.vel[1] * elasticity
+
+                (p1.angle) = (angle1)
+                (p2.angle) = (angle2)
+
+                p1.vel = [speed1x, speed1y]
+                p2.vel = [speed2x, speed2y]
+                p1.pos[0] += sin(angle)
+                p1.pos[1] -= cos(angle)
+                p2.pos[0] -= sin(angle)
+                p2.pos[1] += cos(angle)
+
 def collision_detect():
     global particles
     global num_particles
@@ -236,13 +308,17 @@ def draw():
 
 def main():
     global flag
+    global particles
+
     setup_particles()
     clock = pygame.time.Clock()
     while True:
         if not get_input(): break
-        if flag==1 : move()
-        if collisions: collision_detect() # 충돌을 감지한다.
-        if edge_clamp: clamp_to_edges()
+        #if flag==1 : move()
+        if flag==1 : new_move() # 새로운 동작코드
+        #if collisions: collision_detect() # 충돌을 감지한다.
+        if collisions: collide() # 바꾼 코드인데 충돌 감지해서 튕기기 가능
+        if edge_clamp: clamp_to_edges() # 현재는 False 상태
         draw()
         clock.tick(target_fps)
     pygame.quit()
