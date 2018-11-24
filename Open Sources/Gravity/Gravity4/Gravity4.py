@@ -43,7 +43,7 @@ surface = pygame.display.set_mode(screen_size)
 def rndint(num): return int(round(num))
 
 class Particle(object):
-    def __init__(self, pos=None,vel=None, mass=None):
+    def __init__(self, pos=None,vel=None,mass=None):
         if pos == None: self.pos = [random.uniform(10.0,screen_size[0]-10.0),random.uniform(10.0,screen_size[1]-10.0)]
         else:           self.pos = pos
         if vel == None:
