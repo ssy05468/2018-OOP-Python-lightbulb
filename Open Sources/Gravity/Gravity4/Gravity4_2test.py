@@ -29,6 +29,8 @@ dt = 1.0/target_fps
 flag=0
 #마찰력
 friction_constant = -0.5
+#충돌 탄성 계수
+elasticity = 0.75
 
 if num_particles == -1:
     while True:
@@ -66,14 +68,14 @@ class Particle(object):
             self.vel = [0,0]
         else:
             self.vel = vel
-
        # self.mass=0
-
         self.forces = [0.0,0.0]
     def get_radius(self):
         #Assuming these objects are actually spheres, the radius scales with the cube root of
         #the mass.  If you prefer circle, change to the square root.
-        return radius_scale*(self.hasmass**(1.0/3.0))
+
+        self.radius = radius_scale*(self.hasmass**(1.0/3.0))
+        return self.radius
     def set_velocity(particle1):
         #angle = particle1.angle
         angle = pi/4
@@ -132,6 +134,28 @@ class Particle(object):
             rndint(self.get_radius()),
             0
         )
+    # 다른 코드에서 가지고 온 내용
+    def bounce(self):
+        global elasticity
+        if self.x > width - self.radius:
+            self.x = 2 * (width - self.radius) - self.x
+            self.angle = - self.angle
+            self.speed *= elasticity
+
+        elif self.x < self.size:
+            self.x = 2 * self.size - self.x
+            self.angle = - self.angle
+            self.speed *= elasticity
+
+        if self.y > height - self.size:
+            self.y = 2 * (height - self.size) - self.y
+            self.angle = pi - self.angle
+            self.speed *= elasticity
+
+        elif self.y < self.size:
+            self.y = 2 * self.size - self.y
+            self.angle = pi - self.angle
+            self.speed *= elasticity
 
 def setup_particles():
     global particles # 입자 class를 담고 있는 리스트
