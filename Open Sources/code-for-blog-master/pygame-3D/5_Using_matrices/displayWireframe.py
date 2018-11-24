@@ -25,7 +25,6 @@ class ProjectionViewer:
         self.screen = pygame.display.set_mode((width, height))
         pygame.display.set_caption('Wireframe Display')
         self.background = (10,10,50)
-
         self.wireframes = {}
         self.displayNodes = True
         self.displayEdges = True
