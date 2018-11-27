@@ -11,3 +11,4 @@ class stone:
         self.color=(0,0,0)
         self.isalive=True
         self.angle=0
+        self.speed=0
