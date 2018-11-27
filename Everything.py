@@ -3,10 +3,10 @@ import random
 import math
 
 background_colour = (255,255,255)
-(width, height) = (400, 400)
-drag = 0.999
-elasticity = 0.75
-gravity = (math.pi, 0.002)
+(width, height) = (1920, 1080)
+drag = 0.99999
+elasticity = 0.9
+gravity = (math.pi, 0.000)
 
 def addVectors(xxx_todo_changeme1, xxx_todo_changeme2):
     (angle1, length1) = xxx_todo_changeme1
@@ -52,7 +52,7 @@ class Particle():
         (x, y) = xxx_todo_changeme
         self.x = x
         self.y = y
-        self.size = size
+        self.size = 30
         self.colour = (0, 0, 255)
         self.thickness = 0
         self.speed = 0
