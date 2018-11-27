@@ -6,6 +6,7 @@ unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 SCREEN = pygame.display.set_mode((800, 600))
 screen=SCREEN.get_rect()
 car = pygame.transform.scale(pygame.image.load('Car.png').convert_alpha(), (64, 64))
+print(car)
 pygame.display.set_caption('Car Game')
 pygame.display.set_icon(car)
 FPS = pygame.time.Clock()
@@ -34,9 +35,9 @@ while True:
     elif keys[K_d] or keys[K_RIGHT]:
         angle -= 1
     if keys[K_w] or keys[K_UP]:
-        speed += 30
+        speed += 10
     elif keys[K_s] or keys[K_DOWN]:
-        speed -= 30
+        speed -= 10
 
     carX += speed*math.cos(math.radians(angle))
     carY -= speed*math.sin(math.radians(angle))
@@ -46,4 +47,3 @@ while True:
     position = rotcar.get_rect(center = (carX,carY))
     SCREEN.blit(rotcar, position)
     pygame.display.update()
-    FPS.tick(24)
