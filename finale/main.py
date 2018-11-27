@@ -1,4 +1,5 @@
 import sys, pygame, math
+import easygui
 from pygame.locals import *
 pygame.init()
 
