@@ -1,8 +1,7 @@
 import pygame
 
-class stone:
-
-    def __init__(self,start_x,start_y,radius,mass,level,screen,surface):
+class Particle_of_Stone:
+    def __init__(self,start_x=10,start_y=10,radius=5,mass=1,level=1,screen=None,surface=None):
         self.radius=radius
         self.x=start_x
         self.y=start_y
