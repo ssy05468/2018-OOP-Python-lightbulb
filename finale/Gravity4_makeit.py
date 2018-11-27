@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 import sys, os, traceback
 import random
+import particle_tutorial_8
 from math import *
 if sys.platform in ["win32","win64"]: os.environ["SDL_VIDEO_CENTERED"]="1"
 pygame.display.init()
@@ -20,7 +21,7 @@ radius_scale = 2.0
 #Particles' maximum (random) speed (pixels/sec)
 max_initial_speed = 100.0
 #The gravitational constant in this universe in pixels^3 kg^-1 s^-2.  The real one is 6.67384*(10^-11) m^3 kg^-1 s^-2
-G = 50000.0
+G = 10000.0
 #Movement substeps at the given timestep
 movement_substeps = 1
 #Target FPS

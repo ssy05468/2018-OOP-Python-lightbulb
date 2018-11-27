@@ -93,6 +93,7 @@ class Stone():
             self.speed *= elasticity
 
 
+
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Tutorial 8')
 
