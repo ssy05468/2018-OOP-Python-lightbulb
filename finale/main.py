@@ -2,8 +2,9 @@ import sys, pygame, math
 import easygui
 from pygame.locals import *
 pygame.init()
-
+unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 SCREEN = pygame.display.set_mode((800, 600))
+screen=SCREEN.get_rect()
 car = pygame.transform.scale(pygame.image.load('Car.png').convert_alpha(), (64, 64))
 pygame.display.set_caption('Car Game')
 pygame.display.set_icon(car)
@@ -25,16 +26,17 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
-
     keys = pygame.key.get_pressed()
+    if math.fabs(speed)>0.6:
+        keys=unpressed
     if keys[K_a] or keys[K_LEFT]:
-        angle += speed
+        angle += 1
     elif keys[K_d] or keys[K_RIGHT]:
-        angle -= speed
+        angle -= 1
     if keys[K_w] or keys[K_UP]:
-        speed += 1
+        speed += 50
     elif keys[K_s] or keys[K_DOWN]:
-        speed -= 0.5
+        speed -= 10
 
     carX += speed*math.cos(math.radians(angle))
     carY -= speed*math.sin(math.radians(angle))
@@ -43,6 +45,5 @@ while True:
     rotcar = pygame.transform.rotate(car, angle)
     position = rotcar.get_rect(center = (carX,carY))
     SCREEN.blit(rotcar, position)
-
     pygame.display.update()
     FPS.tick(24)
