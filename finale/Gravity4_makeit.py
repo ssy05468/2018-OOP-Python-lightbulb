@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 import sys, os, traceback
 import random
-import particle_tutorial_8
 from math import *
 if sys.platform in ["win32","win64"]: os.environ["SDL_VIDEO_CENTERED"]="1"
 pygame.display.init()
@@ -14,8 +13,6 @@ num_particles = 2
 num_stone = 10
 #Whether collisions are enabled
 collisions = False
-#Whether to contrain particles to the edges.  Not affected by the collisions enabled flag.
-edge_clamp = False
 #The amount to scale the particles' radius by
 radius_scale = 2.0
 #Particles' maximum (random) speed (pixels/sec)
@@ -29,13 +26,6 @@ target_fps = 60.0
 #dt (should be 1.0/target_fps for realtime, but you can change it to speed up or slow down time)
 dt = 1.0/target_fps
 
-if num_particles == -1:
-    while True:
-        try:
-            num_particles = int(input("Number of particles: "))
-            break
-        except:
-            print("Could not parse number.")
 num_particles_orig = num_particles
 
 screen_size = [800,600]
@@ -170,13 +160,6 @@ def collision_detect():
         particles = temp
     particles += new_particles
     num_particles = len(particles)
-def clamp_to_edges():
-    for p in particles:
-        r = p.get_radius()
-        if p.pos[0]<=               r: p.vel[0]= abs(p.vel[0])
-        if p.pos[1]<=               r: p.vel[1]= abs(p.vel[1])
-        if p.pos[0]>=screen_size[0]-r: p.vel[0]=-abs(p.vel[0])
-        if p.pos[1]>=screen_size[1]-r: p.vel[1]=-abs(p.vel[1])
 def draw():
     surface.fill((25,0,0))
     
@@ -185,14 +168,13 @@ def draw():
         
     pygame.display.flip()
 
-def main():
+def usemain():
     setup_particles()
     clock = pygame.time.Clock()
     while True:
         if not get_input(): break
         move()
         if collisions: collision_detect()
-        if edge_clamp: clamp_to_edges()
         draw()
         clock.tick(target_fps)
     pygame.quit()
