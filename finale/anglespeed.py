@@ -1,9 +1,9 @@
 import sys, pygame, math
 import easygui
 from pygame.locals import *
-
+"""
 unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
+"""
 def stoneshooting(STONE,SCREEN):
     stone=STONE
     FPS=pygame.time.Clock()
@@ -18,17 +18,21 @@ def stoneshooting(STONE,SCREEN):
             pygame.quit()
             sys.exit()
     keys = pygame.key.get_pressed()
+    """
     if math.fabs(stone.vel)>0.6:
         keys=unpressed
+    """
     if keys[K_a] or keys[K_LEFT]:
         stone.angle += 1
     elif keys[K_d] or keys[K_RIGHT]:
         stone.angle -= 1
     if keys[K_w] or keys[K_UP]:
-        stone.vel+= 30
-        return [stone.speed,stone.angle]
+        stone.vel+= 1
     elif keys[K_s] or keys[K_DOWN]:
-        stone.vel-= 30
+        stone.vel-= 1
+    if keys[K_SPACE]:
+        return [stone.vel, stone.angle]
+
 """
     stone.x += stone.vel*math.cos(math.radians(stone.angle))
     stone.y -= stone.vel*math.sin(math.radians(stone.angle))
