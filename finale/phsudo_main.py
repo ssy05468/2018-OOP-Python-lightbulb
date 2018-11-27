@@ -34,9 +34,9 @@ while True:
     elif keys[K_d] or keys[K_RIGHT]:
         angle -= 1
     if keys[K_w] or keys[K_UP]:
-        speed += 50
+        speed += 30
     elif keys[K_s] or keys[K_DOWN]:
-        speed -= 10
+        speed -= 30
 
     carX += speed*math.cos(math.radians(angle))
     carY -= speed*math.sin(math.radians(angle))
