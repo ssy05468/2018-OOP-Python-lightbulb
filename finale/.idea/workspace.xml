@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="865d4af3-1a2b-4d23-98c1-8ea78ca75cd5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/anglespeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/anglespeed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phsudo_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/phsudo_main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/finale$main.coverage" NAME="main Coverage Results" MODIFIED="1543287980658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/finale$main.coverage" NAME="main Coverage Results" MODIFIED="1543288801728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-730262168">
@@ -42,14 +40,14 @@
         <counts>
           <entry key="dummy" value="18" />
           <entry key="md" value="31" />
-          <entry key="py" value="1108" />
+          <entry key="py" value="1118" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="31" />
           <entry key="PLAIN_TEXT" value="18" />
-          <entry key="Python" value="1108" />
+          <entry key="Python" value="1118" />
         </counts>
       </usages-collector>
     </session>
@@ -90,7 +88,7 @@
             <entry file="file://$PROJECT_DIR$/phsudo_main.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="418">
-                  <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+                  <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -315,7 +313,7 @@
     <entry file="file://$PROJECT_DIR$/phsudo_main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>

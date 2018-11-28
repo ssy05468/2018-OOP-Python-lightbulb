@@ -23,10 +23,10 @@ while True:
     anglespeed.stoneshooting(obj)
 
     obj.vel += obj.vel*math.cos(math.radians(obj.angle))
-    carY -= speed*math.sin(math.radians(angle))
-    speed *= 0.95
+    obj.carY -= obj.speed*math.sin(math.radians(obj.angle))
+    obj.vel *= 0.95
 
-    rotcar = pygame.transform.rotate(car, angle)
-    position = rotcar.get_rect(center = (carX,carY))
+    rotcar = pygame.transform.rotate(car, obj.angle)
+    position = rotcar.get_rect(center = (obj.x,obj.y))
     SCREEN.blit(rotcar, position)
     pygame.display.update()
