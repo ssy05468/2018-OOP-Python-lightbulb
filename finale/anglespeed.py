@@ -4,23 +4,15 @@ from pygame.locals import *
 """
 unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 """
-def stoneshooting(STONE,SCREEN):
-    while True:
-        stone = STONE
-        FPS = pygame.time.Clock()
-        screen = SCREEN.get_rect
-        if stone.angle == 360: stone.angle = 0
-        if stone.angle == -1: stone.angle = 359
+def stoneshooting(STONE):
+    stone = STONE
+    FPS = pygame.time.Clock()
+    if stone.angle == 360: stone.angle = 0
+    if stone.angle == -1: stone.angle = 359
 
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
+    for event in pygame.event.get():
         keys = pygame.key.get_pressed()
-        """
-        if math.fabs(stone.vel)>0.6:
-            keys=unpressed
-        """
+
         if keys[K_a] or keys[K_LEFT]:
             stone.angle += 1
         elif keys[K_d] or keys[K_RIGHT]:
@@ -33,6 +25,7 @@ def stoneshooting(STONE,SCREEN):
             stone.vel = -stone.vel % 100
         if keys[K_SPACE]:
             return [stone.vel, stone.angle]
+    return False
 
 """
     stone.x += stone.vel*math.cos(math.radians(stone.angle))
