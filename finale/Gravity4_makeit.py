@@ -26,6 +26,7 @@ target_fps = 60.0
 #dt (should be 1.0/target_fps for realtime, but you can change it to speed up or slow down time)
 dt = 1.0/target_fps
 
+
 num_particles_orig = num_particles
 
 screen_size = [800,600]
@@ -181,7 +182,7 @@ def usemain():
     
 if __name__ == "__main__":
     try:
-        main()
+        usemain()
     except:
         traceback.print_exc()
         pygame.quit()
