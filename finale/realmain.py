@@ -10,7 +10,7 @@ import sys, os, traceback
 # 돌의 개수
 num_of_stone = 10
 
-stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*50+50,start_y=(i//5)*580+10, team=i//5) for i in range(num_of_stone)]
+stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*150+90,start_y=(i//5)*580+10, team=i//5) for i in range(num_of_stone)]
 num_particles = num_particles_orig
 particles = [Particle(state=0) for i in range(num_particles)]
 
@@ -23,17 +23,10 @@ def new_draw():
 
     for q in stone_particles :
         q.draw(surface)
-        #print(1)
 
     pygame.display.flip()
 
 def new_move() :
-
-    for i in range(movement_substeps):
-        for j in range(0, num_particles,1):
-            for k in range(0, num_of_stone,1):
-                Particle.add_forces
-
     for i in range(movement_substeps):
         for p in stone_particles :
             p.move(dt/float(movement_substeps))
