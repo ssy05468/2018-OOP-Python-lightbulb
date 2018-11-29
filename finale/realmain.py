@@ -64,7 +64,9 @@ def score():
     for i in stone_particles:
         scored.setdefault(i.team,0)
         scored[i.team]=scored[i.team]+i.visible
-    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1])
+
+    if scored[0] == 0 : print()
+    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + 'Velocity :' +str(stone_particles[now_select].vel)
 
 def game_setting():
     global now_select
@@ -72,11 +74,9 @@ def game_setting():
     clock = pygame.time.Clock()
     while True:
         #if not get_input() : break
-        print(now_select)
-        vel, angle = stoneshooting(stone_particles[now_select])
-        if vel == -111 and angle == -111 : break
-        #print(stone_particles[1].vel, stone_particles[1].angle)
-        stone_particles[now_select].vel,stone_particles[now_select].angle = stone_particles[now_select].vel + vel, stone_particles[now_select].angle + angle
+        vel, now_select = stoneshooting(stone_particles[now_select], now_select)
+        if vel == -111 and now_select == -111 : break
+        stone_particles[now_select].vel = stone_particles[now_select].vel + vel
         new_move()
         new_draw(score())
 
