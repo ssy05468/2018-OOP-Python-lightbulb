@@ -26,11 +26,13 @@ target_fps = 60.0
 #dt (should be 1.0/target_fps for realtime, but you can change it to speed up or slow down time)
 dt = 1.0/target_fps
 
+particles=[]
+
 num_particles_orig = num_particles
 
 screen_size = [800,600]
 icon = pygame.Surface((1,1)); icon.set_alpha(0); pygame.display.set_icon(icon)
-pygame.display.set_caption("Gravity Simulation - Ian Mallett - v.4.0.0 - 2013")
+pygame.display.set_caption("OOP_LIGHTBULB")
 surface = pygame.display.set_mode(screen_size)
 
 def rndint(num): return int(round(num))
@@ -181,7 +183,7 @@ def usemain():
     
 if __name__ == "__main__":
     try:
-        main()
+        usemain()
     except:
         traceback.print_exc()
         pygame.quit()
