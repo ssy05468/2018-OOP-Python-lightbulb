@@ -13,6 +13,9 @@ pygame.init()
 # 돌의 개수
 num_of_stone = 10
 scored=dict()
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+fontObj = pygame.font.Font('NanumSquareRoundB.ttf', 16)
 
 stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+250,start_y=(i//5)*450+80, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 num_particles = num_particles_orig
@@ -25,7 +28,7 @@ surface=pygame.Surface((500,500)) #게임판
 surface.fill((205,154,91)) #바둑판 색
 window.blit(surface, (150, 50)) #바둑판 위치
 
-def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
+def new_draw(printobj): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
     window.fill((0,0,0))
     window.blit(surface, (150, 50))
 
