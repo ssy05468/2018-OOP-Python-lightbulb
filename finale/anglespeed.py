@@ -10,43 +10,14 @@ plus_ang = 5
 def stoneshooting(STONE):
     stone = STONE
     #print(stone.angle)
-    angle_data = stone.angle
-    vel_data = stone.vel
+    angle_data = stone.angle #발사각
+    vel_data = stone.vel #발사속도
     #print(angle_data, vel_data)
     #print(pygame.event.get())
-    for event in pygame.event.get():
+    for event in pygame.event.get(): #키보드 입력을 받는다.
 
         if stone.angle == 360: stone.angle = 0
         if stone.angle == -1: stone.angle = 359
-<<<<<<< HEAD
-        SCREEN.fill((0, 0, 0))
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-        keys = pygame.key.get_pressed()
-        """
-        if math.fabs(stone.vel)>0.6:
-            keys=unpressed
-        """
-        if keys[K_a] or keys[K_LEFT]:
-            stone.angle += 1
-        elif keys[K_d] or keys[K_RIGHT]:
-            stone.angle -= 1
-        if keys[K_w] or keys[K_UP]:
-            stone.vel += 0.1
-            stone.vel = stone.vel % 10
-        elif keys[K_s] or keys[K_DOWN]:
-            stone.vel -= 0.1
-            stone.vel = stone.vel % 10
-        if keys[K_SPACE]:
-            return [stone.vel, stone.angle]
-    rotcar = pygame.transform.rotate(stone.surface, stone.angle)
-    position = rotcar.get_rect(center = (stone.x,stone.y))
-    SCREEN.blit(rotcar, position)
-    pygame.display.update()
-    FPS.tick(24)
-=======
         if event.type== QUIT : return -111, -111
         if event.type == KEYDOWN :
             if event.key == K_ESCAPE : return -111, -111
@@ -60,13 +31,12 @@ def stoneshooting(STONE):
             elif event.key == K_s or event.key == K_DOWN:
                 stone.hidvel -= plus_vel
                 stone.hidvel = -stone.hidvel % 100
-            elif event.key == K_SPACE:
+            elif event.key == K_SPACE: #스페이스바를 입력받으면 설정한 각도와 속도를 저장한 후 돌의 속도와 각도를 다시 0으로 초기화한다.
                 a, b = stone.hidvel, stone.hidang
                 stone.hidvel, stone.hidang = 0,0
                 return a,b
 
     return 0,0
->>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
 
 """
     stone.x += stone.vel*math.cos(math.radians(stone.angle))
