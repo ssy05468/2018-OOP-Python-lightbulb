@@ -1,7 +1,7 @@
 import pygame
 from math import *
 
-elasticity = 0.95
+elasticity = 0.9999
 
 class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고, 반지름 질량은 기본값을 설정
     def __init__(self,start_x=10,start_y=10,radius=10,mass=1,level=1,surface=None, team=None, visible=1):
@@ -50,7 +50,7 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         dx = self.x - p2.x
         dy = self.y - p2.y
 
-        dist = hypot(dx, dy)
+        dist = hypot(dx, dy)*0.5
         if dist < self.radius + p2.radius:
             tangent = atan2(dy, dx)
             angle = 0.5 * pi + tangent
