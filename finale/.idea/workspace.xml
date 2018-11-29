@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="865d4af3-1a2b-4d23-98c1-8ea78ca75cd5" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/anglespeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/anglespeed.py" afterDir="false" />
+=======
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anglespeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/anglespeed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phsudo_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/phsudo_main.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Gravity4_makeit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gravity4_makeit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anglespeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/anglespeed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realmain.py" beforeDir="false" afterPath="$PROJECT_DIR$/realmain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stone.py" beforeDir="false" afterPath="$PROJECT_DIR$/stone.py" afterDir="false" />
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
+>>>>>>> 62bbca5bd8a0f1f40ac5c6292b595f15dbd5dbb8
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,13 +24,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/finale$main.coverage" NAME="main Coverage Results" MODIFIED="1543288801728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/finale$main.coverage" NAME="main Coverage Results" MODIFIED="1543289354465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-730262168">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.7" value="2" />
@@ -40,14 +53,14 @@
         <counts>
           <entry key="dummy" value="18" />
           <entry key="md" value="31" />
-          <entry key="py" value="1118" />
+          <entry key="py" value="1223" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="31" />
           <entry key="PLAIN_TEXT" value="18" />
-          <entry key="Python" value="1118" />
+          <entry key="Python" value="1223" />
         </counts>
       </usages-collector>
     </session>
@@ -99,8 +112,18 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Gravity4_makeit.py">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state relative-caret-position="760">
                   <caret line="40" column="53" lean-forward="true" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
+=======
+<<<<<<< HEAD
+                <state relative-caret-position="353">
+                  <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+=======
+                <state relative-caret-position="152">
+                  <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
+>>>>>>> 62bbca5bd8a0f1f40ac5c6292b595f15dbd5dbb8
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -115,8 +138,18 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/realmain.py">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state relative-caret-position="-323">
                   <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+=======
+<<<<<<< HEAD
+                <state relative-caret-position="285">
+                  <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+=======
+                <state relative-caret-position="76">
+                  <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
+>>>>>>> 62bbca5bd8a0f1f40ac5c6292b595f15dbd5dbb8
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -150,6 +183,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>speed</find>
+      <find>carY</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,10 +197,17 @@
         <option value="$PROJECT_DIR$/윤준하_메모장.md" />
         <option value="$PROJECT_DIR$/move.py" />
         <option value="$PROJECT_DIR$/phsudo_main.py" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/anglespeed.py" />
+=======
         <option value="$PROJECT_DIR$/realmain.py" />
         <option value="$PROJECT_DIR$/stone.py" />
         <option value="$PROJECT_DIR$/Gravity4_makeit.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/anglespeed.py" />
+=======
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
+>>>>>>> 62bbca5bd8a0f1f40ac5c6292b595f15dbd5dbb8
       </list>
     </option>
   </component>
@@ -294,15 +335,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+=======
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10067114" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.329718" />
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+=======
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32907802" />
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -377,8 +426,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gravity4_makeit.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="760">
           <caret line="40" column="53" lean-forward="true" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="353">
+          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+=======
+        <state relative-caret-position="171">
+          <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
+>>>>>>> 62bbca5bd8a0f1f40ac5c6292b595f15dbd5dbb8
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -387,8 +446,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/realmain.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-323">
           <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="285">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+=======
+        <state relative-caret-position="152">
+          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+>>>>>>> 62bbca5bd8a0f1f40ac5c6292b595f15dbd5dbb8
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
@@ -407,8 +475,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anglespeed.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="133">
           <caret line="7" column="14" lean-forward="true" selection-end-line="50" selection-end-column="3" />
+=======
+        <state relative-caret-position="76">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+>>>>>>> 38d52a28a4a692ba903d54f298ebcbac150b5eac
+>>>>>>> 62bbca5bd8a0f1f40ac5c6292b595f15dbd5dbb8
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
