@@ -12,6 +12,7 @@ pygame.init()
 
 # 돌의 개수
 num_of_stone = 10
+scored=dict()
 
 stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+250,start_y=(i//5)*450+80, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 num_particles = num_particles_orig
@@ -27,11 +28,16 @@ window.blit(surface, (150, 50)) #바둑판 위치
 def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
     window.fill((0,0,0))
     window.blit(surface, (150, 50))
+
+    textSurfaceObj = fontObj.render(str(printobj), True, WHITE, BLACK)
+    textRectObj = textSurfaceObj.get_rect()
+    textRectObj.center = (400, 30)
+    window.blit(textSurfaceObj, textRectObj)
+
     for p in particles:
          p.draw(surface)
-
     for q in stone_particles:
-        if q.visible ==1 : q.draw()
+        if q.visible == 1 : q.draw()
 
     pygame.display.flip()
 
@@ -39,6 +45,14 @@ def new_move() :
     for i in range(movement_substeps):
         for p in stone_particles :
             p.move(dt/float(movement_substeps))
+
+def score():
+    global scored
+    scored=dict()
+    for i in stone_particles:
+        scored.setdefault(i.team,0)
+        scored[i.team]=scored[i.team]+i.visible
+    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1])
 
 def game_setting():
     global now_select
@@ -52,7 +66,8 @@ def game_setting():
         #print(stone_particles[1].vel, stone_particles[1].angle)
         stone_particles[now_select].vel,stone_particles[now_select].angle = stone_particles[now_select].vel + vel, stone_particles[now_select].angle + angle
         new_move()
-        new_draw()
+        new_draw(score())
+
         clock.tick(target_fps)
 
     pygame.quit()

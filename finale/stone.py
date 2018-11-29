@@ -34,6 +34,7 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         self.vel=0.95*self.vel
         if abs(self.vel)<0.1 : self.vel=0
 
+
     def draw(self): #스크린에 돌을 그린다.
         pygame.draw.circle(
             self.surface,
