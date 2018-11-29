@@ -18,6 +18,7 @@ class Particle_of_Stone:
         self.x += dt*self.vel * cos(radians(self.angle))
         self.y += dt*self.vel * sin(radians(self.angle))
         self.vel=0.95*self.vel
+        if abs(self.vel)<0.1 : self.vel=0
 
     def draw(self, surface):
         pygame.draw.circle(

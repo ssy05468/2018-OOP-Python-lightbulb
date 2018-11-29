@@ -34,8 +34,9 @@ def new_move() :
             for k in range(0, num_of_stone,1):
                 Particle.add_forces
     '''
-    for p in stone_particles :
-        p.move(dt/float(movement_substeps))
+    for i in range(movement_substeps):
+        for p in stone_particles :
+            p.move(dt/float(movement_substeps))
 
 def game_setting():
     setup_particles()
@@ -43,7 +44,7 @@ def game_setting():
     while True:
         #if not get_input() : break
         stone_particles[1].vel,stone_particles[1].angle=stoneshooting(stone_particles[1])
-        print(stone_particles[1].vel, stone_particles[1].angle)
+        #print(stone_particles[1].vel, stone_particles[1].angle)
         move()
         new_draw()
         clock.tick(target_fps)
