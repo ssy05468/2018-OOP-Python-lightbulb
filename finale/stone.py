@@ -16,14 +16,14 @@ class Particle_of_Stone:
         self.team=team
         self.hidvel = 0
         self.hidang = 0
-    def move(self, dt):
+    def move(self, dt): #전달받은 시간 간격에 속력을 곱해 돌의 위치를 이동시킨다. 속력은 0.95배로 계속 줄어든다.
         self.x += dt*self.vel * cos(radians(self.angle))
         self.y += dt*self.vel * sin(radians(self.angle))
         #print(self.angle, self.vel, self.x, self.y)
         self.vel=0.95*self.vel
         if abs(self.vel)<0.1 : self.vel=0
 
-    def draw(self, surface):
+    def draw(self, surface): #스크린에 돌을 그린다.
         pygame.draw.circle(
             surface,
             self.color,
