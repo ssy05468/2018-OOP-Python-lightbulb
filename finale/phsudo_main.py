@@ -1,5 +1,5 @@
 import sys, pygame, math
-import anglespeed, stone
+import easygui
 from pygame.locals import *
 pygame.init()
 unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -11,23 +11,40 @@ pygame.display.set_caption('Car Game')
 pygame.display.set_icon(car)
 FPS = pygame.time.Clock()
 
-obj=stone.Particle_of_Stone()
+carX  = 400
+carY  = 100
+angle = 90
+speed = 0
 
-obj.x  = 400
-obj.y  = 100
-obj.angle = 90
-obj.vel = 0
-obj.surface=car
-SCREEN.fill((0, 0, 0))
 while True:
-    if(abs(obj.vel)<0.4):
-        anglespeed.stoneshooting(obj,SCREEN)
 
-    obj.x += obj.vel*math.cos(math.radians(obj.angle))
-    obj.y -= obj.vel*math.sin(math.radians(obj.angle))
-    obj.vel *= 0.95
+    if angle == 360: angle = 0
+    if  angle == -1: angle = 359
 
-    rotcar = pygame.transform.rotate(car, obj.angle)
-    position = rotcar.get_rect(center = (obj.x,obj.y))
+    SCREEN.fill((0,0,0))
+
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+    keys = pygame.key.get_pressed()
+    if math.fabs(speed)>0.6:
+        keys=unpressed
+    if keys[K_a] or keys[K_LEFT]:
+        angle += 1
+    elif keys[K_d] or keys[K_RIGHT]:
+        angle -= 1
+    if keys[K_w] or keys[K_UP]:
+        speed += 10
+    elif keys[K_s] or keys[K_DOWN]:
+        speed -= 10
+
+    carX += speed*math.cos(math.radians(angle))
+    carY -= speed*math.sin(math.radians(angle))
+    speed *= 0.95
+
+    rotcar = pygame.transform.rotate(car, angle)
+    position = rotcar.get_rect(center = (carX,carY))
+    print(position)
     SCREEN.blit(rotcar, position)
     pygame.display.update()

@@ -52,6 +52,12 @@ def new_move() :
         for p in stone_particles :
             p.move(dt/float(movement_substeps))
 
+def arrow(angle):
+    arrowimg=pygame.transform.scale(pygame.image.load('arrow.png').convert_alpha(), (64, 64))
+    rotarrow = pygame.transform.rotate(arrowimg,angle)
+    position = rotarrow.get_rect(center = (700,200))
+    window.blit(rotarrow, position)
+
 def score():
     global scored
     scored=dict()
