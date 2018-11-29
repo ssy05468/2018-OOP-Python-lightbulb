@@ -13,7 +13,7 @@ pygame.init()
 # 돌의 개수
 num_of_stone = 10
 
-stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*150+90,start_y=(i//5)*580+10, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
+stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+110,start_y=(i//5)*460+15, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 num_particles = num_particles_orig
 particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
 
@@ -33,7 +33,7 @@ def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에�
          print(1)
 
     for q in stone_particles:
-        q.draw()
+        q.draw(surface)
 
     pygame.display.flip()
 
