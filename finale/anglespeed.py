@@ -7,25 +7,28 @@ unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 def stoneshooting(STONE):
     stone = STONE
     FPS = pygame.time.Clock()
-    if stone.angle == 360: stone.angle = 0
-    if stone.angle == -1: stone.angle = 359
 
+    angle_data = stone.angle
+    vel_data = stone.vel
     for event in pygame.event.get():
-        keys = pygame.key.get_pressed()
-
-        if keys[K_a] or keys[K_LEFT]:
+        #print(1)
+        if event.type == K_ESCAPE : pass
+        if stone.angle == 360: stone.angle = 0
+        if stone.angle == -1: stone.angle = 359
+        if event.type == K_a or event.type == K_LEFT:
             stone.angle += 1
-        elif keys[K_d] or keys[K_RIGHT]:
+        elif event.type == K_d or event.type == K_RIGHT:
             stone.angle -= 1
-        if keys[K_w] or keys[K_UP]:
+        if event.type == K_w or event.type == K_UP:
             stone.vel += 1
             stone.vel = stone.vel % 100
-        elif keys[K_s] or keys[K_DOWN]:
+        elif event.type == K_s or event.type == K_DOWN:
             stone.vel -= 1
             stone.vel = -stone.vel % 100
-        if keys[K_SPACE]:
+        if event.type == K_SPACE:
             return [stone.vel, stone.angle]
-    return False
+
+    return [vel_data,angle_data]
 
 """
     stone.x += stone.vel*math.cos(math.radians(stone.angle))
