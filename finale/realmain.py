@@ -24,7 +24,6 @@ surface=pygame.Surface((500,500)) #게임판
 surface.fill((205,154,91)) #바둑판 색
 window.blit(surface, (150, 50)) #바둑판 위치
 
-
 def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
     window.fill((0,0,0))
     window.blit(surface, (150, 50))
@@ -42,19 +41,20 @@ def new_move() :
             p.move(dt/float(movement_substeps))
 
 def game_setting():
+    global now_select
     setup_particles()
     clock = pygame.time.Clock()
     while True:
         #if not get_input() : break
-        vel, angle = stoneshooting(stone_particles[1])
+        print(now_select)
+        vel, angle = stoneshooting(stone_particles[now_select])
         if vel == -111 and angle == -111 : break
         #print(stone_particles[1].vel, stone_particles[1].angle)
-        stone_particles[1].vel,stone_particles[1].angle = stone_particles[1].vel + vel, stone_particles[1].angle + angle
+        stone_particles[now_select].vel,stone_particles[now_select].angle = stone_particles[now_select].vel + vel, stone_particles[now_select].angle + angle
         new_move()
         new_draw()
         clock.tick(target_fps)
 
     pygame.quit()
-
 
 game_setting()

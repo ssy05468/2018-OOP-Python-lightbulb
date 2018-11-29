@@ -6,8 +6,11 @@ unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 """
 
 plus_vel = 250
-plus_ang = 10
+plus_ang = -10
+now_select = 1
 def stoneshooting(STONE):
+    global now_select
+
     stone = STONE
     #print(stone.angle)
     angle_data = stone.angle #발사각
@@ -20,6 +23,17 @@ def stoneshooting(STONE):
         if event.type== QUIT : return -111, -111
         if event.type == KEYDOWN :
             if event.key == K_ESCAPE : return -111, -111
+            if event.key == K_1 : now_select=0
+            elif event.key == K_2 : now_select=1
+            elif event.key == K_3 : now_select = 2
+            elif event.key == K_4: now_select = 3
+            elif event.key == K_5: now_select = 4
+            elif event.key == K_6: now_select = 5
+            elif event.key == K_7: now_select = 6
+            elif event.key == K_8: now_select = 7
+            elif event.key == K_9: now_select = 8
+            elif event.key == K_0: now_select = 9
+
             if event.key == K_a or event.key == K_LEFT:
                 stone.hidang += plus_ang
             elif event.key == K_d or event.key == K_RIGHT:
