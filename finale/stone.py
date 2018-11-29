@@ -19,7 +19,7 @@ class Particle_of_Stone:
     def move(self, dt):
         self.x += dt*self.vel * cos(radians(self.angle))
         self.y += dt*self.vel * sin(radians(self.angle))
-        #print(self.angle, self.vel, self.x, self.y)
+        print(self.angle, self.vel, self.x, self.y)
         self.vel=0.95*self.vel
         if abs(self.vel)<0.1 : self.vel=0
 

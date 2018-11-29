@@ -28,12 +28,12 @@ def new_draw():
     pygame.display.flip()
 
 def new_move() :
-    '''
+
     for i in range(movement_substeps):
         for j in range(0, num_particles,1):
             for k in range(0, num_of_stone,1):
                 Particle.add_forces
-    '''
+
     for i in range(movement_substeps):
         for p in stone_particles :
             p.move(dt/float(movement_substeps))

@@ -5,7 +5,7 @@ from pygame.locals import *
 unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 """
 
-plus_vel = 100
+plus_vel = 300
 plus_ang = 5
 def stoneshooting(STONE):
     stone = STONE
@@ -15,7 +15,6 @@ def stoneshooting(STONE):
     #print(angle_data, vel_data)
     #print(pygame.event.get())
     for event in pygame.event.get(): #키보드 입력을 받는다.
-
         if stone.angle == 360: stone.angle = 0
         if stone.angle == -1: stone.angle = 359
         if event.type== QUIT : return -111, -111
@@ -27,10 +26,10 @@ def stoneshooting(STONE):
                 stone.hidang -= plus_ang
             elif event.key == K_w or event.key == K_UP:
                 stone.hidvel += plus_vel
-                stone.hidvel = stone.hidvel % 100
+                stone.hidvel = stone.hidvel
             elif event.key == K_s or event.key == K_DOWN:
                 stone.hidvel -= plus_vel
-                stone.hidvel = -stone.hidvel % 100
+                stone.hidvel = -stone.hidvel
             elif event.key == K_SPACE: #스페이스바를 입력받으면 설정한 각도와 속도를 저장한 후 돌의 속도와 각도를 다시 0으로 초기화한다.
                 a, b = stone.hidvel, stone.hidang
                 stone.hidvel, stone.hidang = 0,0
