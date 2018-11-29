@@ -3,19 +3,29 @@ from Gravity4_makeit import *
 from screen import *
 from stone import *
 from time import *
+import pygame
 from pygame.locals import *
 import random
 import sys, os, traceback
+
+pygame.init()
 
 # 돌의 개수
 num_of_stone = 10
 
 stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*150+90,start_y=(i//5)*580+10, team=i//5) for i in range(num_of_stone)]
 num_particles = num_particles_orig
-particles = [Particle(state=0) for i in range(num_particles)]
+particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
+
+#화면 생성
+screen=screen('lightbulb',800,600,(255,255,255)) #게임화면
+window=screen.screen
+surface=pygame.Surface((500,500)) #게임판
+surface.fill((205,154,91)) #바둑판 색
+window.blit(surface, (150, 50)) #바둑판 위치
+
 
 def new_draw():
-    surface.fill((25,0,0))
 
     for p in particles :
         p.draw(surface)
