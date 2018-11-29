@@ -67,7 +67,7 @@ def score():
         scored[i.team]=scored[i.team]+i.visible
 
     if scored[0] == 0 : print()
-    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + 'Velocity :' +str(stone_particles[now_select].vel)
+    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1)
 
 def game_setting():
     global now_select
