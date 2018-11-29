@@ -1,12 +1,12 @@
 import sys, pygame, math
-import easygui
 from pygame.locals import *
+import time
 """
 unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 """
 
-plus_vel = 300
-plus_ang = 5
+plus_vel = 250
+plus_ang = 10
 def stoneshooting(STONE):
     stone = STONE
     #print(stone.angle)
@@ -25,15 +25,18 @@ def stoneshooting(STONE):
             elif event.key == K_d or event.key == K_RIGHT:
                 stone.hidang -= plus_ang
             elif event.key == K_w or event.key == K_UP:
-                stone.hidvel += plus_vel
-                stone.hidvel = stone.hidvel
+                if stone.hidvel<1000:
+                    stone.hidvel += plus_vel
+                #stone.hidvel = stone.hidvel #이부분은 무슨 코든지 모르겠음
             elif event.key == K_s or event.key == K_DOWN:
-                stone.hidvel -= plus_vel
-                stone.hidvel = -stone.hidvel
-            elif event.key == K_SPACE: #스페이스바를 입력받으면 설정한 각도와 속도를 저장한 후 돌의 속도와 각도를 다시 0으로 초기화한다.
+                if stone.hidvel>0:
+                    stone.hidvel -= plus_vel
+                #stone.hidvel = -stone.hidvel #
+            elif event.key == K_SPACE and stone.hidvel>0: #스페이스바를 입력받았을 때 속력이 있다면 설정한 각도와 속도를 저장한 후 돌의 속도와 각도를 다시 0으로 초기화한다.
                 a, b = stone.hidvel, stone.hidang
                 stone.hidvel, stone.hidang = 0,0
                 return a,b
+            time.sleep(0.01)
 
     return 0,0
 
