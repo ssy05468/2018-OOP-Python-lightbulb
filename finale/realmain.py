@@ -28,6 +28,7 @@ surface=pygame.Surface((500,500)) #게임판
 surface.fill((205,154,91)) #바둑판 색
 window.blit(surface, (150, 50)) #바둑판 위치
 
+
 def new_draw(printobj): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
     window.fill((0,0,0))
     window.blit(surface, (150, 50))
@@ -36,7 +37,6 @@ def new_draw(printobj): #돌 클래스에서 게임판을 전달받았으므로 
     textRectObj = textSurfaceObj.get_rect()
     textRectObj.center = (400, 30)
     window.blit(textSurfaceObj, textRectObj)
-
     for p in particles:
          p.draw(surface)
     for q in stone_particles:
@@ -50,9 +50,9 @@ def new_move() :
             p.move(dt/float(movement_substeps))
 
 def arrow(angle):
-    arrowimg=pygame.transform.scale(pygame.image.load('arrow.png').convert_alpha(), (64, 64))
+    arrowimg = pygame.transform.scale(pygame.image.load('arrow.png').convert_alpha(), (64, 64))
     rotarrow = pygame.transform.rotate(arrowimg,angle)
-    position = rotarrow.get_rect(center = (700,200))
+    position = rotarrow.get_rect(center = (700,500))
     window.blit(rotarrow, position)
 
 def score():
@@ -76,7 +76,6 @@ def game_setting():
         stone_particles[now_select].vel,stone_particles[now_select].angle = stone_particles[now_select].vel + vel, stone_particles[now_select].angle + angle
         new_move()
         new_draw(score())
-
         clock.tick(target_fps)
 
     pygame.quit()
