@@ -25,12 +25,7 @@ surface=pygame.Surface((500,500)) #게임판
 surface.fill((205,154,91)) #바둑판 색
 window.blit(surface, (150, 50)) #바둑판 위치
 
-#점수 및 메시지용 폰트 출력 세팅
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-fontObj = pygame.font.Font('NanumSquareRoundB.ttf', 16)
-
-def new_draw(printobj): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
+def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
     window.fill((0,0,0))
     window.blit(surface, (150, 50))
 
@@ -60,20 +55,21 @@ def score():
     return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1])
 
 def game_setting():
+    global now_select
     setup_particles()
     clock = pygame.time.Clock()
     while True:
         #if not get_input() : break
-        vel, angle = stoneshooting(stone_particles[1])
+        print(now_select)
+        vel, angle = stoneshooting(stone_particles[now_select])
         if vel == -111 and angle == -111 : break
         #print(stone_particles[1].vel, stone_particles[1].angle)
-        stone_particles[1].vel,stone_particles[1].angle = stone_particles[1].vel + vel, stone_particles[1].angle + angle
+        stone_particles[now_select].vel,stone_particles[now_select].angle = stone_particles[now_select].vel + vel, stone_particles[now_select].angle + angle
         new_move()
         new_draw(score())
 
         clock.tick(target_fps)
 
     pygame.quit()
-
 
 game_setting()
