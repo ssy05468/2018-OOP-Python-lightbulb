@@ -8,7 +8,7 @@ class Particle_of_Stone:
         self.y=start_y
         self.mass=mass
         self.level=level
-        self.color=(0,0,0)
+        self.color=(255,255,255)
         self.isalive=True
         self.angle=0
         self.vel=0
@@ -19,13 +19,15 @@ class Particle_of_Stone:
     def move(self, dt):
         self.x += dt*self.vel * cos(radians(self.angle))
         self.y += dt*self.vel * sin(radians(self.angle))
+        #print(self.angle, self.vel, self.x, self.y)
         self.vel=0.95*self.vel
         if abs(self.vel)<0.1 : self.vel=0
 
     def draw(self, surface):
         pygame.draw.circle(
             surface,
-            (255, 255, 255),
-            (self.x, self.y), self.radius,
+            self.color,
+            (int(self.x), int(self.y)),
+            int(self.radius),
             0
         )

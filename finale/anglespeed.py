@@ -4,6 +4,9 @@ from pygame.locals import *
 """
 unpressed=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 """
+
+plus_vel = 20
+plus_ang = 5
 def stoneshooting(STONE):
     stone = STONE
     #print(stone.angle)
@@ -19,14 +22,14 @@ def stoneshooting(STONE):
         if event.type == KEYDOWN :
             if event.key == K_ESCAPE : return -111, -111
             if event.key == K_a or event.key == K_LEFT:
-                stone.hidang += 1
+                stone.hidang += plus_ang
             elif event.key == K_d or event.key == K_RIGHT:
-                stone.hidang -= 1
+                stone.hidang -= plus_ang
             elif event.key == K_w or event.key == K_UP:
-                stone.hidvel += 1
+                stone.hidvel += plus_vel
                 stone.hidvel = stone.hidvel % 100
             elif event.key == K_s or event.key == K_DOWN:
-                stone.hidvel -= 1
+                stone.hidvel -= plus_vel
                 stone.hidvel = -stone.hidvel % 100
             elif event.key == K_SPACE:
                 a, b = stone.hidvel, stone.hidang

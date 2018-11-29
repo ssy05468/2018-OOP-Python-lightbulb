@@ -19,10 +19,10 @@ def new_draw():
 
     for p in particles :
         p.draw(surface)
-        #print(1)
+        print(1)
 
-    for p in stone_particles :
-        p.draw(surface)
+    for q in stone_particles :
+        q.draw(surface)
         #print(1)
 
     pygame.display.flip()
@@ -45,9 +45,9 @@ def game_setting():
         #if not get_input() : break
         vel, angle = stoneshooting(stone_particles[1])
         if vel == -111 and angle == -111 : break
-        print(stone_particles[1].vel, stone_particles[1].angle)
+        #print(stone_particles[1].vel, stone_particles[1].angle)
         stone_particles[1].vel,stone_particles[1].angle = stone_particles[1].vel + vel, stone_particles[1].angle + angle
-        #new_move()
+        new_move()
         new_draw()
         clock.tick(target_fps)
 
