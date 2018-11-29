@@ -45,6 +45,10 @@ while True:
 
     rotcar = pygame.transform.rotate(car, angle)
     position = rotcar.get_rect(center = (carX,carY))
-    print(position)
+    print(rotcar)
     SCREEN.blit(rotcar, position)
+    arrowimg = pygame.transform.scale(pygame.image.load('arrow.png').convert_alpha(), (64, 64))
+    rotarrow = pygame.transform.rotate(arrowimg, angle)
+    position = rotarrow.get_rect(center=(400, 100))
+    SCREEN.blit(rotarrow, position)
     pygame.display.update()
