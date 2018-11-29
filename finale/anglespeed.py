@@ -10,7 +10,6 @@ plus_ang = -10
 
 def stoneshooting(STONE, selectstone):
     now_select = selectstone
-
     stone = STONE
     #print(stone.angle)
     angle_data = stone.angle #발사각

@@ -30,21 +30,22 @@ window=screen.screen
 surface=pygame.Surface((500,500)) #게임판
 surface.fill((205,154,91)) #바둑판 색
 window.blit(surface, (150, 50)) #바둑판 위치
-
-
-def new_draw(printobj): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
-    window.fill((0,0,0))
-    window.blit(surface, (150, 50))
-
+def textprint(printobj, xcord=400, ycord=30):
     textSurfaceObj = fontObj.render(str(printobj), True, WHITE, BLACK)
     textRectObj = textSurfaceObj.get_rect()
-    textRectObj.center = (400, 30)
+    textRectObj.center = (xcord, ycord)
     window.blit(textSurfaceObj, textRectObj)
+
+def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
+    window.fill((0,0,0))
+    window.blit(surface, (150, 50))
+    arrow(-stone_particles[now_select].angle)
     for p in particles:
          p.draw(surface)
     for q in stone_particles:
         if q.visible == 1 : q.draw()
-
+    textprint(score())
+    textprint("선택한 돌의 방향",720,550)
     pygame.display.flip()
 
 def new_move() :
@@ -58,7 +59,7 @@ def new_move() :
 def arrow(angle):
     arrowimg = pygame.transform.scale(pygame.image.load('arrow.png').convert_alpha(), (64, 64))
     rotarrow = pygame.transform.rotate(arrowimg,angle)
-    position = rotarrow.get_rect(center = (700,500))
+    position = rotarrow.get_rect(center = (720,500))
     window.blit(rotarrow, position)
 
 def score():
@@ -81,7 +82,7 @@ def game_setting():
         if vel == -111 and now_select == -111 : break
         stone_particles[now_select].vel = stone_particles[now_select].vel + vel
         new_move()
-        new_draw(score())
+        new_draw()
         clock.tick(target_fps)
 
     pygame.quit()
