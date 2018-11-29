@@ -12,6 +12,9 @@ pygame.init()
 
 # 돌의 개수
 num_of_stone = 10
+# 무엇을 선택했나요
+now_select = 0
+
 scored=dict()
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
