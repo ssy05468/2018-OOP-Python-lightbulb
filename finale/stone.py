@@ -14,6 +14,8 @@ class Particle_of_Stone:
         self.vel=0
         self.surface=surface
         self.team=team
+        self.hidvel = 0
+        self.hidang = 0
     def move(self, dt):
         self.x += dt*self.vel * cos(radians(self.angle))
         self.y += dt*self.vel * sin(radians(self.angle))

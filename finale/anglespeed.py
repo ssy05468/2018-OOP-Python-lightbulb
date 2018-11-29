@@ -9,29 +9,31 @@ def stoneshooting(STONE):
     #print(stone.angle)
     angle_data = stone.angle
     vel_data = stone.vel
+    #print(angle_data, vel_data)
     #print(pygame.event.get())
     for event in pygame.event.get():
-        print(event.type==K_UP)
-        if event.type == K_ESCAPE : pass
+
         if stone.angle == 360: stone.angle = 0
         if stone.angle == -1: stone.angle = 359
-
+        if event.type== QUIT : return -111, -111
         if event.type == KEYDOWN :
+            if event.key == K_ESCAPE : return -111, -111
             if event.key == K_a or event.key == K_LEFT:
-                stone.angle += 1
+                stone.hidang += 1
             elif event.key == K_d or event.key == K_RIGHT:
-                stone.angle -= 1
-                print(1)
-            if event.key == K_w or event.key == K_UP:
-                stone.vel += 1
-                stone.vel = stone.vel % 100
+                stone.hidang -= 1
+            elif event.key == K_w or event.key == K_UP:
+                stone.hidvel += 1
+                stone.hidvel = stone.hidvel % 100
             elif event.key == K_s or event.key == K_DOWN:
-                stone.vel -= 1
-                stone.vel = -stone.vel % 100
-            if event.key == K_SPACE:
-                return [stone.vel, stone.angle]
+                stone.hidvel -= 1
+                stone.hidvel = -stone.hidvel % 100
+            elif event.key == K_SPACE:
+                a, b = stone.hidvel, stone.hidang
+                stone.hidvel, stone.hidang = 0,0
+                return a,b
 
-    return [vel_data,angle_data]
+    return 0,0
 
 """
     stone.x += stone.vel*math.cos(math.radians(stone.angle))

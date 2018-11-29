@@ -43,11 +43,14 @@ def game_setting():
     clock = pygame.time.Clock()
     while True:
         #if not get_input() : break
-        stone_particles[1].vel,stone_particles[1].angle=stoneshooting(stone_particles[1])
-        #print(stone_particles[1].vel, stone_particles[1].angle)
-        move()
+        vel, angle = stoneshooting(stone_particles[1])
+        if vel == -111 and angle == -111 : break
+        print(stone_particles[1].vel, stone_particles[1].angle)
+        stone_particles[1].vel,stone_particles[1].angle = stone_particles[1].vel + vel, stone_particles[1].angle + angle
+        #new_move()
         new_draw()
         clock.tick(target_fps)
+
     pygame.quit()
 
 
