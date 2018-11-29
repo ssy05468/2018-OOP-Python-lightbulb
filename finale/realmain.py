@@ -51,6 +51,9 @@ def new_move() :
     for i in range(movement_substeps):
         for p in stone_particles :
             p.move(dt/float(movement_substeps))
+            for q in stone_particles :
+                if p != q :
+                    p.collide(q)
 
 def arrow(angle):
     arrowimg = pygame.transform.scale(pygame.image.load('arrow.png').convert_alpha(), (64, 64))
@@ -66,7 +69,7 @@ def score():
         scored[i.team]=scored[i.team]+i.visible
 
     if scored[0] == 0 : print()
-    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + 'Velocity :' +str(stone_particles[now_select].vel)
+    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + 'angle  :' +str(stone_particles[now_select].angle)
 
 def game_setting():
     global now_select
