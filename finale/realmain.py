@@ -51,9 +51,9 @@ def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에�
 def new_move() :
     for i in range(movement_substeps):
         for p in stone_particles :
-            p.move(dt/float(movement_substeps))
+            if p.visible == 1 : p.move(dt/float(movement_substeps))
             for q in stone_particles :
-                if p != q :
+                if p != q:
                     p.collide(q)
 
 def arrow(angle):
@@ -78,7 +78,13 @@ def game_setting():
     clock = pygame.time.Clock()
     while True:
         #if not get_input() : break
+        temp = now_select
+
         vel, now_select = stoneshooting(stone_particles[now_select], now_select)
+        stone_particles[now_select].color=(200,100,50)
+        if now_select != temp :
+            if stone_particles[temp].team == 0 : stone_particles[temp].color = (255,255,255)
+            else : stone_particles[temp].color = (150,150,200)
         if vel == -111 and now_select == -111 : break
         stone_particles[now_select].vel = stone_particles[now_select].vel + vel
         new_move()
