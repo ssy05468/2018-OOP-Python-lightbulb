@@ -11,19 +11,20 @@ pygame.display.set_caption('Car Game')
 pygame.display.set_icon(car)
 FPS = pygame.time.Clock()
 
-obj=stone.stone()
+obj=stone.Particle_of_Stone()
 
 obj.x  = 400
 obj.y  = 100
 obj.angle = 90
 obj.vel = 0
-
+obj.surface=car
+SCREEN.fill((0, 0, 0))
 while True:
+    if(abs(obj.vel)<0.4):
+        anglespeed.stoneshooting(obj,SCREEN)
 
-    anglespeed.stoneshooting(obj)
-
-    obj.vel += obj.vel*math.cos(math.radians(obj.angle))
-    obj.carY -= obj.speed*math.sin(math.radians(obj.angle))
+    obj.x += obj.vel*math.cos(math.radians(obj.angle))
+    obj.y -= obj.vel*math.sin(math.radians(obj.angle))
     obj.vel *= 0.95
 
     rotcar = pygame.transform.rotate(car, obj.angle)
