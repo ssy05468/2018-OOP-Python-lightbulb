@@ -50,7 +50,7 @@ def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에�
         if q.visible == 1 : q.draw()
     textprint(score())
     textprint("선택한 돌의 방향",720,550)
-    pygame.display.update()
+    pygame.display.flip()
 
 def new_move() :
     for i in range(movement_substeps):
