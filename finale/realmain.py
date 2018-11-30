@@ -16,9 +16,9 @@ fontObj = pygame.font.Font('NanumSquareRoundB.ttf', 16)
 #화면 생성
 screen=screen('lightbulb',800,600,(0,0,0)) #게임화면
 window=screen.screen
-surface=pygame.Surface((500,500)) #게임판
-surface.fill((205,154,91)) #바둑판 색
-window.blit(surface, (150, 50)) #바둑판 위치
+surface=pygame.Surface((500,500)) # 게임판
+surface.fill((205,154,91)) # 바둑판 색
+window.blit(surface, (150, 50)) # 바둑판 위치
 
 # 돌의 개수
 num_of_stone = 10
@@ -26,7 +26,7 @@ num_of_stone = 10
 now_select = 0
 
 #돌 생성
-stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+250,start_y=(i//5)*450+80, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
+stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+150,start_y=(i//5)*450+50, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 num_particles = num_particles_orig
 #particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
 
