@@ -28,7 +28,7 @@ now_select = 0
 #돌 생성
 stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+250,start_y=(i//5)*450+80, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 num_particles = num_particles_orig
-#particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
+particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
 
 scored=dict()
 
