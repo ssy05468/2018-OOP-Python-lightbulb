@@ -28,7 +28,7 @@ now_select = 0
 #돌 생성
 stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+150,start_y=(i//5)*450+50, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 num_particles = num_particles_orig
-#particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
+particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
 
 scored=dict()
 
@@ -50,7 +50,7 @@ def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에�
         if q.visible == 1 : q.draw()
     textprint(score())
     textprint("선택한 돌의 방향",720,550)
-    pygame.display.update()
+    pygame.display.flip()
 
 def new_move() :
     for i in range(movement_substeps):
