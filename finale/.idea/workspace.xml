@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f8bf8236-60a6-4d9b-9ad3-4fd3659718a2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/realmain.py" beforeDir="false" afterPath="$PROJECT_DIR$/realmain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stone.py" beforeDir="false" afterPath="$PROJECT_DIR$/stone.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,12 +55,12 @@
     <session id="1862019437">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1033" />
+          <entry key="py" value="1068" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1033" />
+          <entry key="Python" value="1068" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,8 +82,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/anglespeed.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="95">
-                  <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+                <state relative-caret-position="361">
+                  <caret line="55" column="35" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -93,8 +94,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/stone.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="627">
-                  <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+                <state relative-caret-position="216">
+                  <caret line="59" column="40" lean-forward="true" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -130,8 +131,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/realmain.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="114">
-                  <caret line="75" column="21" lean-forward="true" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
+                <state relative-caret-position="216">
+                  <caret line="83" column="13" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="13" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -159,8 +160,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/anglespeed.py" />
-        <option value="$PROJECT_DIR$/stone.py" />
         <option value="$PROJECT_DIR$/realmain.py" />
+        <option value="$PROJECT_DIR$/stone.py" />
       </list>
     </option>
   </component>
@@ -391,16 +392,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/anglespeed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/particle_tutorial_8.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -418,16 +409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stone.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/screen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -435,10 +416,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/anglespeed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="55" column="35" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stone.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="59" column="40" lean-forward="true" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/realmain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="75" column="21" lean-forward="true" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
+        <state relative-caret-position="216">
+          <caret line="83" column="13" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="13" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>

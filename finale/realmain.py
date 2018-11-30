@@ -70,7 +70,7 @@ def score():
         scored[i.team]=scored[i.team]+i.visible
 
     if scored[0] == 0 : print()
-    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + 'angle  :' +str(stone_particles[now_select].angle)
+    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ ' Selection :'+str(now_select+1)
 
 def game_setting():
     global now_select
@@ -81,7 +81,11 @@ def game_setting():
         temp = now_select
 
         vel, now_select = stoneshooting(stone_particles[now_select], now_select)
-        stone_particles[now_select].color=(200,100,50)
+        try :
+            stone_particles[now_select].color=(200,100,50)
+        except IndexError :
+            pass
+
         if now_select != temp :
             if stone_particles[temp].team == 0 : stone_particles[temp].color = (255,255,255)
             else : stone_particles[temp].color = (150,150,200)
