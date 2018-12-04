@@ -93,4 +93,7 @@ def game_setting():
 
     pygame.quit()
 
-game_setting()
+try :
+    game_setting()
+except Exception :
+    pass
