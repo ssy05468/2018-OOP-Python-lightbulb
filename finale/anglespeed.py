@@ -32,7 +32,6 @@ def stoneshooting(STONE, selectstone):
             elif event.key == K_8 : now_select = 7
             elif event.key == K_9 : now_select = 8
             elif event.key == K_0 : now_select = 9
-
             if event.key == K_a or event.key == K_LEFT:
                 stone.angle+=plus_ang
 

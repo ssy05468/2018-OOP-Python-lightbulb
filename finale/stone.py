@@ -47,6 +47,14 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         )
 
     def collide(self, p2):
+        if self.visible == 0 :
+            self.vel = 0
+            self.angle=0
+        if p2.visible == 0 :
+            self.vel = 0
+            self.angle = 0
+        if self.visible ==0 or p2.visible ==0 :
+            return
         dx = self.x - p2.x
         dy = self.y - p2.y
 
