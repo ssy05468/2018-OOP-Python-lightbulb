@@ -8,32 +8,28 @@ from pygame.locals import *
 import random
 import sys, os, traceback
 
-#유틸리티 설정
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-fontObj = pygame.font.Font('NanumSquareRoundB.ttf', 16)
-
-#화면 생성
-screen=screen('lightbulb',800,600,(0,0,0)) #게임화면
-window=screen.screen
-surface=pygame.Surface((500,500)) # 게임판
-surface.fill((205,154,91)) # 바둑판 색
-window.blit(surface, (150, 50)) # 바둑판 위치
+pygame.init()
 
 # 돌의 개수
 num_of_stone = 10
 # 무엇을 선택했나요
 now_select = 0
 
-#돌 생성
-stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+150,start_y=(i//5)*450+50, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
+scored=dict()
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+fontObj = pygame.font.Font('NanumSquareRoundB.ttf', 16)
+
+stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+250,start_y=(i//5)*450+80, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 num_particles = num_particles_orig
 particles = [Particle(state=0) for i in range(num_particles)] #중력장을 위한 요소
 
-scored=dict()
-
-pygame.init()
-
+#화면 생성
+screen=screen('lightbulb',800,600,(0,0,0)) #게임화면
+window=screen.screen
+surface=pygame.Surface((500,500)) #게임판
+surface.fill((205,154,91)) #바둑판 색
+window.blit(surface, (150, 50)) #바둑판 위치
 def textprint(printobj, xcord=400, ycord=30):
     textSurfaceObj = fontObj.render(str(printobj), True, WHITE, BLACK)
     textRectObj = textSurfaceObj.get_rect()
@@ -74,7 +70,7 @@ def score():
         scored[i.team]=scored[i.team]+i.visible
 
     if scored[0] == 0 : print()
-    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ ' Selection :'+str(now_select+1)
+    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + 'angle  :' +str(stone_particles[now_select].angle)
 
 def game_setting():
     global now_select
@@ -85,16 +81,12 @@ def game_setting():
         temp = now_select
 
         vel, now_select = stoneshooting(stone_particles[now_select], now_select)
-        try :
-            stone_particles[now_select].color=(200,100,50)
-        except IndexError :
-            pass
-
+        stone_particles[now_select].color=(200,100,50)
         if now_select != temp :
             if stone_particles[temp].team == 0 : stone_particles[temp].color = (255,255,255)
-            else : stone_particles[temp].color = (150,150,200) #현재 종료할 때 이부분 리스트 에러남
+            else : stone_particles[temp].color = (150,150,200)
         if vel == -111 and now_select == -111 : break
-        stone_particles[now_select].vel += vel
+        stone_particles[now_select].vel = stone_particles[now_select].vel + vel
         new_move()
         new_draw()
         clock.tick(target_fps)

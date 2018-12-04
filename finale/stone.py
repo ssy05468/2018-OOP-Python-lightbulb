@@ -54,12 +54,11 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         if dist < self.radius + p2.radius:
             #tangent = atan2(dy, dx)
             #angle = 0.5 * pi + tangent
-
             #angle1 = 2 * tangent - self.angle
             #angle2 = 2 * tangent - p2.angle
             speed1 = p2.vel * elasticity
             speed2 = self.vel * elasticity
-
+            print(self.vel, p2.vel)
             angle1 = self.angle
             angle2 = p2.angle
             (self.angle, self.vel) = (angle2, speed1)
