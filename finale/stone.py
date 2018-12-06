@@ -1,4 +1,5 @@
 import pygame
+import random
 from math import *
 
 elasticity = 0.9999
@@ -36,16 +37,7 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         if self.y < 50 :
             self.visible = 0
 
-        if self.visible == 0 :
-            temp = abs(self.bycon//5 - self.mass//5) # 서로 다른 팀이 부딪힘
 
-            if temp==1 and self.mass%5 > self.bycon%5 and self.bycon != -1:
-                self.visible = 1
-                self.x = (self.mass-(self.mass//5)*5)*70+250
-                self.y = (self.mass//5)*450+80
-                self.vel = 0
-                self.angle = 0
-                self.bycon = -1
 
 
         self.vel=0.95*self.vel
@@ -60,6 +52,20 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
             int(self.radius),
             0
         )
+    def check_alive(self):
+        temp = abs(self.bycon // 5 - self.mass // 5)  # 서로 다른 팀이 부딪힘
+
+        if temp == 1 and self.mass % 5 > self.bycon % 5 and self.bycon != -1:
+            self.visible = 1
+
+            self.x = (self.mass - (self.mass // 5) * 5) * 70 + 250
+            self.y = (self.mass // 5) * 450 + 80
+            self.vel = 0
+            self.angle = 0
+            self.bycon = -1
+        else :
+            pass
+
 
     def collide(self, p2):
         dx = self.x - p2.x

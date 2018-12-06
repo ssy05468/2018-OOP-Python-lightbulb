@@ -56,6 +56,12 @@ def new_move() :
                 if p != q:
                     p.collide(q)
 
+                    if p.visible == 0 :
+                        p.check_alive()
+                    if q.visible == 0 :
+                        q.check_alive()
+
+
 def arrow(angle):
     arrowimg = pygame.transform.scale(pygame.image.load('arrow.png').convert_alpha(), (64, 64))
     rotarrow = pygame.transform.rotate(arrowimg,angle)
