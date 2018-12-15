@@ -8,7 +8,7 @@ pygame.display.init()
 pygame.font.init()
 
 #Set to -1 to choose at runtime
-num_particles = 2
+num_particles = 0
 #알까기 돌멩이들
 num_stone = 10
 #Whether collisions are enabled

@@ -2,11 +2,8 @@ from anglespeed import *
 from Gravity4_makeit import *
 from screen import *
 from stone import *
-from time import *
 import pygame
-from pygame.locals import *
 import random
-import sys, os, traceback
 
 pygame.init()
 
@@ -40,9 +37,9 @@ def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에�
     window.fill((0,0,0))
     window.blit(surface, (150, 50))
     arrow(-stone_particles[now_select].angle)
-    for p in particles:
+    for p in particles: # 중력장 돌
          p.draw(surface)
-    for q in stone_particles:
+    for q in stone_particles: # 바둑 돌
         if q.visible == 1 : q.draw()
     textprint(score())
     textprint("선택한 돌의 방향",720,550)
@@ -51,14 +48,14 @@ def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에�
 def new_move() :
     for i in range(movement_substeps):
         for p in stone_particles :
-            if p.visible == 1 : p.move(dt/float(movement_substeps))
+            if p.visible == 1 : p.move(dt/float(movement_substeps)) # 보일 때만 움직임
             for q in stone_particles :
                 if p != q:
-                    p.collide(q)
-
-                    if p.visible == 0 :
+                    #print(p, q)
+                    collide(p,q)
+                    if p.visible != 0 :
                         p.check_alive()
-                    if q.visible == 0 :
+                    if q.visible != 0 :
                         q.check_alive()
 
 
@@ -73,10 +70,14 @@ def score():
     scored=dict()
     for i in stone_particles:
         scored.setdefault(i.team,0)
-        scored[i.team]=scored[i.team]+i.visible
+        if i.visible == -1 :
+            sum = 0
+        else : sum = i.visible
+        scored[i.team]=scored[i.team]+sum
 
-    if scored[0] == 0 : print()
-    return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + 'angle  :' +str(stone_particles[now_select].angle)
+    if scored[0]==0 : return 'GRAY WIN'
+    elif scored[1]==0 : return 'WHITE WIN'
+    else : return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1) + ' angle  :' +str(stone_particles[now_select].angle)
 
 def game_setting():
     global now_select
@@ -102,4 +103,5 @@ def game_setting():
 try :
     game_setting()
 except Exception :
+    print("ERROR")
     pass
