@@ -72,7 +72,7 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         dy = self.y - p2.y
 
         dist = hypot(dx, dy)
-        if dist < self.radius + p2.radius:
+        if dist < self.radius + p2.radius-1:
             self.bycon = p2.mass
             p2.bycon = self.mass
 
