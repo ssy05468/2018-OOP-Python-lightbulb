@@ -2,7 +2,8 @@ from anglespeed import *
 from screen import *
 from stone import *
 import pygame
-
+import time
+import end
 screen_size = [800,600]
 
 #Movement substeps at the given timestep
@@ -123,7 +124,6 @@ def game_setting():
         stone_particles[now_select].vel = stone_particles[now_select].vel + vel
         new_move()
         new_draw()
-
         if abs(turn*9 - now_select)>=5 :
             for p in stone_particles :
                 if turn == 1 :
@@ -139,11 +139,13 @@ def game_setting():
                     stone_particles[temp].color = WHITE
                 else:
                     stone_particles[temp].color = GRAY
-
+        if score() == 'GRAY WIN' or score()=='WHITE WIN':
+            break
         clock.tick(target_fps)
+    end.ending(score())
     pygame.quit()
 game_setting()
 try :
     pass
-except Exception :
+except Exception:
     pass
