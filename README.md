@@ -41,9 +41,8 @@ pygame : vpython 사용이 어려울 경우 pygame으로 2차원 알까기를 �
 ## 10. 실행 방법
  pip로 설치해야 하는 목록.
   --> pygame
- finale 밑에 있는 파일들이 필요.
- realmain.py를 실행하면 된다.
- 방향키 및 스페이스바로 알 발사, 숫자로 돌 선택 (0~9)
+  
+ finale 밑에 있는 파일들이 필요하다.  realmain.py를 실행하면 된다.  방향키 및 스페이스바로 알 발사, 숫자로 돌 선택 (0~9) 기능을 수행한다.
 
 #### readme 작성관련 참고하기 [바로가기](https://heropy.blog/2017/09/30/markdown/)
 
