@@ -41,10 +41,27 @@ pygame : vpython 사용이 어려울 경우 pygame으로 2차원 알까기를 �
 ## 10. 실행 방법
  1. pip로 설치해야 하는 목록 : pygame
  2. finale 밑에 있는 파일들이 필요하고 realmain.py를 실행하면 된다.
- 3. 방향키 UP, DOWN으로 속도를 조절한다. 최대 게이지는 4이고, 최소 게이지는 0이다.
+ 3. 방향키 UP, DOWN으로 속도를 조절한다. 최대 게이지는 4이고, 최소 게이지는 0이다. (파워게이지에 대한 정보는 전략상 넣지 않았으니 플레이하는데 주의한다.)
  4. 방향키 LEFT, RIGHT으로는 방향을 조절한다. 방향 관련된 정보는 게임 실행 창에서 나타나니 확인하면서 돌려본다.
  5. 숫자로 돌 선택 (0~9) 기능을 수행한다. WHITE 턴 일때는 GRAY 돌이 선택되지 않는다. 반대도 같다.
- 6. 시작은 WHITE부터이고 턴은 지속적으로 넘어간다. 만약에 죽은 돌을 컨트롤하면 턴이 넘어가니 주의하면서 플레이해야 한다.
+ 6. 시작은 WHITE부터이고 턴은 지속적으로 넘어간다. 만약에 죽은 돌을 컨트롤하거나, 속도가 0인채로 스페이스바를 누르면 아무일도 없이 턴이 넘어가니 주의하면서 플레이해야 한다.
+ 7. 낮은 돌이 높은 돌을 죽이면, 함께 죽는다. 같은 팀에게는 적용되지 않는다.
+ 8. 게임이 끝나면 Ending 메세지가 나오고 끝난다.
+
+## 11. 참조
+realmain의 구조와 movement_substpes, target_fps, dt 등의 상수는 Gravity 4 코드에서 일부 참조했다.
+<Gravity Simulation - 4.0.0> 
+https://www.pygame.org/project/617/4587 
+http://geometrian.com/programming/index.php 
+http://www.geometrian.com/data/programming/projects/Gravitation/Simulation%204.0.0/Gravity4.zip
+
+pygame에서 한글 출력하는 방법은 빗자루네 블로그에서 참조했다.
+<pygame 한글 출력>
+http://imp17.com/tc/myevan/133?fbclid=IwAR3C8PL16p5Vr0D5wMpNGFKSnfzTk6UNK8OM2sCO2iihFXXONeofkA03yPQ
+
+anglespeed의 구조는 일부 pygame-physics-simulation에서 가져왔다.
+<pygame-physics-simulation>
+http://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/
 
 #### readme 작성관련 참고하기 [바로가기](https://heropy.blog/2017/09/30/markdown/)
 

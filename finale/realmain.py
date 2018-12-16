@@ -6,6 +6,21 @@ import time
 import end
 screen_size = [800,600]
 
+'''
+realmain의 구조와 movement_substpes, target_fps, dt 등의 상수는 Gravity 4 코드에서 일부 참조했다.
+<Gravity Simulation - 4.0.0> 
+https://www.pygame.org/project/617/4587 
+http://geometrian.com/programming/index.php 
+http://www.geometrian.com/data/programming/projects/Gravitation/Simulation%204.0.0/Gravity4.zip
+
+pygame에서 한글 출력하는 방법은 빗자루네 블로그에서 참조했다.
+<pygame 한글 출력>
+http://imp17.com/tc/myevan/133?fbclid=IwAR3C8PL16p5Vr0D5wMpNGFKSnfzTk6UNK8OM2sCO2iihFXXONeofkA03yPQ
+
+anglespeed의 구조는 일부 pygame-physics-simulation에서 가져왔다.
+<pygame-physics-simulation>
+http://www.petercollingridge.co.uk/tutorials/pygame-physics-simulation/
+'''
 #Movement substeps at the given timestep
 movement_substeps = 1
 #Target FPS
