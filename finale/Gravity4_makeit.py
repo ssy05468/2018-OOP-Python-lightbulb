@@ -19,22 +19,14 @@ radius_scale = 2.0
 max_initial_speed = 100.0
 #The gravitational constant in this universe in pixels^3 kg^-1 s^-2.  The real one is 6.67384*(10^-11) m^3 kg^-1 s^-2
 G = 10000.0
-#Movement substeps at the given timestep
-movement_substeps = 1
-#Target FPS
-target_fps = 60.0
-#dt (should be 1.0/target_fps for realtime, but you can change it to speed up or slow down time)
-dt = 1.0/target_fps
+
 
 particles=[]
 
-num_particles_orig = num_particles
+#num_particles_orig = num_particles
 
 
-screen_size = [800,600]
-icon = pygame.Surface((1,1)); icon.set_alpha(0); pygame.display.set_icon(icon)
-pygame.display.set_caption("OOP_LIGHTBULB")
-surface = pygame.display.set_mode(screen_size)
+
 def rndint(num): return int(round(num))
 
 class Particle(object):

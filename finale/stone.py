@@ -1,18 +1,16 @@
 import pygame
-import random
 from math import *
 
-elasticity = 0.9999
+elasticity = 0.9999 # 충돌 시 속력 감소
 
 class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고, 반지름 질량은 기본값을 설정
-    def __init__(self,start_x=10,start_y=10,radius=10,mass=1,level=1,surface=None, team=None, visible=1, bycon = -1):
+    def __init__(self,start_x=10,start_y=10,radius=10,mass=1,surface=None, team=None, visible=1, bycon = -1):
         self.radius=radius
         self.x=start_x
         self.y=start_y
         self.mass=mass
-        self.level=level
         if team == 0 : self.color=(255,255,255)
-        else : self.color=(150,150,200)
+        else : self.color=(100,100,100)
         self.isalive=True
         self.angle=0
         self.vel=0
@@ -29,17 +27,18 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
 
         if self.x > 650 :
             self.angle = 180 - self.angle
+            self.vel += 1
         if self.y > 550 :
             self.visible = 0
+            print("%d died by out of range" % (self.mass+1))
         if self.x < 150 :
             self.angle = 180 - self.angle
-            print("%d died by out of range" % (self.mass+1))
+            self.vel += 1
         if self.y < 50 :
             self.visible = 0
             print("%d died by out of range" % (self.mass+1))
 
-
-        self.vel=0.95*self.vel
+        self.vel=0.95*self.vel # 속도의 감소
         if abs(self.vel)<0.1 : self.vel=0
 
 
@@ -51,12 +50,12 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
             int(self.radius),
             0
         )
-    def check_alive(self):
+    def check_alive(self, index):
         temp = abs(self.bycon // 5 - self.mass // 5)  # 서로 다른 팀이 부딪힘
-
+        print(self.mass+1, self.bycon, temp)
         if temp == 1 and self.mass % 5 < self.bycon % 5 and self.bycon != -1:
-            print("%d died by contact miss" % self.mass)
-            print(self.mass, self.bycon)
+            print("%d died by contact miss" % (self.mass+1))
+            print(self.mass+1, self.bycon+1, index+1)
 
             self.visible = 0
             self.x = 800
@@ -65,7 +64,6 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
             self.vel = 0
             self.angle = 0
             self.bycon = -1
-
 
 def collide(p1, p2):
     dx = p1.x - p2.x
@@ -84,6 +82,4 @@ def collide(p1, p2):
 
         (p1.angle, p1.vel) = (angle2, speed1)
         (p2.angle, p2.vel) = (angle1, speed2)
-        return True
-
-    return False
+        # 복잡한 충돌은 이 게임에서 불가능하다.

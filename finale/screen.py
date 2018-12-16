@@ -8,6 +8,3 @@ class screen:
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption(name)
         self.screen.fill(self.color)
-
-def surface_draw(screen_data) :
-    pass

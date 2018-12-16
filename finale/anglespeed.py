@@ -1,7 +1,6 @@
-import sys, pygame, math
+import pygame
 from pygame.locals import *
 
-import time
 
 plus_vel = 250 # 한번의 클릭으로 더해지는 속도
 plus_ang = -10 # 한번의 클릭으로 생겨나는 각도
@@ -9,8 +8,7 @@ plus_ang = -10 # 한번의 클릭으로 생겨나는 각도
 def stoneshooting(STONE, selectstone):
     now_select = selectstone
     stone = STONE
-    angle_data = stone.angle #발사각
-    vel_data = stone.vel #발사속도
+
     for event in pygame.event.get(): #키보드 입력을 받는다.
         if stone.angle == 360: stone.angle = 0
         if stone.angle == -1: stone.angle = 359
@@ -34,7 +32,7 @@ def stoneshooting(STONE, selectstone):
                 stone.angle-=plus_ang
 
             elif event.key == K_w or event.key == K_UP:
-                if stone.hidvel<1000:
+                if stone.hidvel<1500:
                     stone.hidvel += plus_vel
 
             elif event.key == K_s or event.key == K_DOWN:
