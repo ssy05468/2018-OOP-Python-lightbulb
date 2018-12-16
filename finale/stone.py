@@ -52,7 +52,7 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         )
     def check_alive(self, index):
         temp = abs(self.bycon // 5 - self.mass // 5)  # 서로 다른 팀이 부딪힘
-        print(self.mass+1, self.bycon, temp)
+        #print(self.mass+1, self.bycon, temp)
         if temp == 1 and self.mass % 5 < self.bycon % 5 and self.bycon != -1:
             print("%d died by contact miss" % (self.mass+1))
             print(self.mass+1, self.bycon+1, index+1)

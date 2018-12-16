@@ -12,6 +12,8 @@ target_fps = 60.0
 #dt (should be 1.0/target_fps for realtime, but you can change it to speed up or slow down time)
 dt = 1.0/target_fps
 
+turn = 0
+
 icon = pygame.Surface((1,1)); icon.set_alpha(0); pygame.display.set_icon(icon)
 pygame.display.set_caption("OOP_LIGHTBULB")
 surface = pygame.display.set_mode(screen_size)
@@ -47,6 +49,7 @@ def textprint(printobj, xcord=400, ycord=30):
     window.blit(textSurfaceObj, textRectObj)
 
 def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에서 surface안써줘도됨
+    global turn
     window.fill((0,0,0))
     window.blit(surface, (150, 50))
     arrow(-stone_particles[now_select].angle)
@@ -56,6 +59,10 @@ def new_draw(): #돌 클래스에서 게임판을 전달받았으므로 draw에�
         if q.visible == 1 : q.draw()
     textprint(score())
     textprint("선택한 돌의 방향",800,530)
+    if turn == 0 :
+        textprint("WHITE TURN", 800, 400)
+    else :
+        textprint("GRAY TURN", 800,400)
 
     for p in stone_particles :
         if p.mass == 0 :
@@ -102,13 +109,13 @@ def score():
     else : return 'White : ' + str(scored[0]) + ' vs Gray :' + str(scored[1]) + '\n'+ 'Selection :'+str(now_select+1)
 
 def game_setting():
-    global now_select
+    global now_select, turn
     clock = pygame.time.Clock()
     while True:
         temp = now_select
-
-        vel, now_select = stoneshooting(stone_particles[now_select], now_select)
+        vel, now_select, newturn = stoneshooting(stone_particles[now_select], now_select, turn)
         stone_particles[now_select].color=SELECTED
+        turn = newturn
         if now_select != temp :
             if stone_particles[temp].team == 0 : stone_particles[temp].color = WHITE
             else : stone_particles[temp].color = GRAY
@@ -116,11 +123,27 @@ def game_setting():
         stone_particles[now_select].vel = stone_particles[now_select].vel + vel
         new_move()
         new_draw()
+
+        if abs(turn*9 - now_select)>=5 :
+            for p in stone_particles :
+                if turn == 1 :
+                    if p.mass > 4 and p.visible == 1:
+                        now_select = p.mass
+                        break
+                else :
+                    if p.mass <= 4 and p.visible ==1 :
+                        now_select = p.mass
+                        break
+            if now_select != temp:
+                if stone_particles[temp].team == 0:
+                    stone_particles[temp].color = WHITE
+                else:
+                    stone_particles[temp].color = GRAY
+
         clock.tick(target_fps)
-
     pygame.quit()
-
+game_setting()
 try :
-    game_setting()
+    pass
 except Exception :
     pass
