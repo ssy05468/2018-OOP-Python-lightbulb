@@ -1,6 +1,6 @@
 import pygame
 
-class screen:
+class screen: # 스크린을 선언하고 display.set_caption까지 호출함
     def __init__(self,name,width=900,height=600,color=[255,255,255]):
         self.width=width
         self.height=height
