@@ -33,8 +33,11 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
             self.visible = 0
         if self.x < 150 :
             self.angle = 180 - self.angle
+            print("%d died by out of range" % (self.mass+1))
         if self.y < 50 :
             self.visible = 0
+            print("%d died by out of range" % (self.mass+1))
+
 
         self.vel=0.95*self.vel
         if abs(self.vel)<0.1 : self.vel=0
@@ -52,13 +55,16 @@ class Particle_of_Stone: #처음 돌을 놓는 위치와 레벨을 전달받고,
         temp = abs(self.bycon // 5 - self.mass // 5)  # 서로 다른 팀이 부딪힘
 
         if temp == 1 and self.mass % 5 < self.bycon % 5 and self.bycon != -1:
+            print("%d died by contact miss" % self.mass)
+            print(self.mass, self.bycon)
+
             self.visible = 0
+            self.x = 800
+            self.radius = 0
 
             self.vel = 0
             self.angle = 0
             self.bycon = -1
-        else :
-            pass
 
 
 def collide(p1, p2):
@@ -66,7 +72,7 @@ def collide(p1, p2):
     dy = p1.y - p2.y
 
     dist = hypot(dx, dy)
-    if dist < p1.radius + p2.radius:
+    if dist - 1 < p1.radius + p2.radius:
         p1.bycon = p2.mass
         p2.bycon = p1.mass
 
@@ -78,3 +84,6 @@ def collide(p1, p2):
 
         (p1.angle, p1.vel) = (angle2, speed1)
         (p2.angle, p2.vel) = (angle1, speed2)
+        return True
+
+    return False
