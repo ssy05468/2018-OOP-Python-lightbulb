@@ -33,7 +33,7 @@ fontObj = pygame.font.Font('NanumSquareRoundB.ttf', 16)
 
 stone_particles = [Particle_of_Stone(start_x=(i-(i//5)*5)*70+250,start_y=(i//5)*450+80,mass=i, team=i//5,surface=surface) for i in range(num_of_stone)] #서피스(게임판)전달
 
-#화면 생성
+#화면 생
 screen=screen('lightbulb',1000,600,(0,0,0)) #게임화면
 window=screen.screen
 surface=pygame.Surface((500,500)) #게임판

@@ -43,6 +43,7 @@ def stoneshooting(STONE, selectstone):
                 a = stone.hidvel
                 stone.hidvel = 0
                 stone.bycon = -1
+
                 return a,now_select
 
     return 0,now_select
